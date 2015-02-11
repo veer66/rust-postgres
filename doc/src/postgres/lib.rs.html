@@ -2127,7 +2127,6 @@
 <span id="2085">2085</span>
 <span id="2086">2086</span>
 <span id="2087">2087</span>
-<span id="2088">2088</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! Rust-Postgres is a pure-Rust frontend for the popular PostgreSQL database. It</span>
 <span class='doccomment'>//! exposes a high level interface in the vein of JDBC or Go&#39;s `database/sql`</span>
@@ -2184,14 +2183,13 @@
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>doc</span>(<span class='ident'>html_root_url</span><span class='op'>=</span><span class='string'>&quot;https://sfackler.github.io/rust-postgres/doc&quot;</span>)]</span>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>feature</span>(<span class='ident'>plugin</span>, <span class='ident'>unsafe_destructor</span>, <span class='ident'>collections</span>, <span class='ident'>io</span>, <span class='ident'>core</span>, <span class='ident'>path</span>, <span class='ident'>std_misc</span>)]</span>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>warn</span>(<span class='ident'>missing_docs</span>)]</span>
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>plugin</span>(<span class='ident'>phf_macros</span>)]</span>
 
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>byteorder</span>;
 <span class='attribute'>#[<span class='ident'>macro_use</span>]</span>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>log</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>openssl</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>phf</span>;
-<span class='attribute'>#[<span class='ident'>plugin</span>]</span> <span class='attribute'>#[<span class='ident'>no_link</span>]</span>
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>phf_macros</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='string'>&quot;rustc-serialize&quot;</span> <span class='kw'>as</span> <span class='ident'>serialize</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>time</span>;
 
