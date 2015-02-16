@@ -44,7 +44,7 @@
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>postgres</a>::<wbr><a class='struct' href=''>Connection</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]
             </a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-33520' href='../src/postgres/lib.rs.html#849-851'>[src]</a></span></h1>
+        </span><a id='src-33437' href='../src/postgres/lib.rs.html#851-853'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct Connection {
     // some fields omitted
 }</pre><div class='docblock'><p>A connection to a Postgres database.</p>
@@ -208,6 +208,8 @@ and feed them into this method.</p>
 
 <p>Used with the <code>cancel_query</code> function. The object returned can be used
 to cancel any query executed by the connection it was created from.</p>
+</div><h4 id='method.parameter' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.parameter' class='fnname'>parameter</a>(&amp;self, param: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;</code></h4>
+<div class='docblock'><p>Returns the value of the specified parameter.</p>
 </div><h4 id='method.is_desynchronized' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.is_desynchronized' class='fnname'>is_desynchronized</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
 <div class='docblock'><p>Returns whether or not the stream has been desynchronized due to an
 error in the communication channel with the server.</p>

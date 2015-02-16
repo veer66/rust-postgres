@@ -44,7 +44,7 @@
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>postgres</a>::<wbr><a class='struct' href=''>Transaction</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]
             </a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-34220' href='../src/postgres/lib.rs.html#1162-1167'>[src]</a></span></h1>
+        </span><a id='src-34159' href='../src/postgres/lib.rs.html#1169-1174'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct Transaction&lt;'conn&gt; {
     // some fields omitted
 }</pre><div class='docblock'><p>Represents a transaction on a database connection.</p>
@@ -69,6 +69,8 @@ connection, not just the duration of this transaction.</p>
 <h2 id="panics" class='section-header'><a
                            href="#panics">Panics</a></h2>
 <p>Panics if there is an active nested transaction.</p>
+</div><h4 id='method.connection' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.connection' class='fnname'>connection</a>(&amp;self) -&gt; &amp;'conn <a class='struct' href='../postgres/struct.Connection.html' title='postgres::Connection'>Connection</a></code></h4>
+<div class='docblock'><p>Returns a reference to the <code>Transaction</code>&#39;s <code>Connection</code>.</p>
 </div><h4 id='method.is_active' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.is_active' class='fnname'>is_active</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
 <div class='docblock'><p>Like <code>Connection::is_active</code>.</p>
 </div><h4 id='method.will_commit' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.will_commit' class='fnname'>will_commit</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
