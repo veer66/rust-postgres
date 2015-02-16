@@ -76,6 +76,12 @@ not compatible with the Postgres type.</p>
 <span class='kw'>let</span> <span class='ident'>foo</span>: <span class='ident'>i32</span> <span class='op'>=</span> <span class='ident'>row</span>.<span class='ident'>get</span>(<span class='number'>0u</span>);
 <span class='kw'>let</span> <span class='ident'>bar</span>: <span class='ident'>String</span> <span class='op'>=</span> <span class='ident'>row</span>.<span class='ident'>get</span>(<span class='string'>&quot;bar&quot;</span>);
 </pre>
+</div><h4 id='method.get_bytes' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.get_bytes' class='fnname'>get_bytes</a>&lt;I&gt;(&amp;self, idx: I) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;[</a><a href='http://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a><a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>&gt; <span class='where'>where I: <a class='trait' href='../postgres/trait.RowIndex.html' title='postgres::RowIndex'>RowIndex</a> + <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a></span></code></h4>
+<div class='docblock'><p>Retrieves the specified field as a raw buffer of Postgres data.</p>
+
+<h2 id="panics" class='section-header'><a
+                           href="#panics">Panics</a></h2>
+<p>Panics if the index does not references a column.</p>
 </div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl&lt;'a&gt; <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../postgres/struct.Row.html' title='postgres::Row'>Row</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='#method.fmt' class='fnname'>fmt</a>(&amp;self, fmt: &amp;mut <a class='struct' href='http://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
 </div></section>
     <section id='search' class="content hidden"></section>
