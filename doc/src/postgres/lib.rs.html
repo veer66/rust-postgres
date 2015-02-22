@@ -2152,7 +2152,6 @@
 <span id="2110">2110</span>
 <span id="2111">2111</span>
 <span id="2112">2112</span>
-<span id="2113">2113</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! Rust-Postgres is a pure-Rust frontend for the popular PostgreSQL database. It</span>
 <span class='doccomment'>//! exposes a high level interface in the vein of JDBC or Go&#39;s `database/sql`</span>
@@ -2207,9 +2206,8 @@
 <span class='doccomment'>//! }</span>
 <span class='doccomment'>//! ```</span>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>doc</span>(<span class='ident'>html_root_url</span><span class='op'>=</span><span class='string'>&quot;https://sfackler.github.io/rust-postgres/doc&quot;</span>)]</span>
-<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>feature</span>(<span class='ident'>plugin</span>, <span class='ident'>unsafe_destructor</span>, <span class='ident'>collections</span>, <span class='ident'>io</span>, <span class='ident'>core</span>, <span class='ident'>path</span>, <span class='ident'>std_misc</span>)]</span>
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>feature</span>(<span class='ident'>unsafe_destructor</span>, <span class='ident'>collections</span>, <span class='ident'>old_io</span>, <span class='ident'>io</span>, <span class='ident'>core</span>, <span class='ident'>old_path</span>, <span class='ident'>std_misc</span>)]</span>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>warn</span>(<span class='ident'>missing_docs</span>)]</span>
-<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>plugin</span>(<span class='ident'>phf_macros</span>)]</span>
 
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>byteorder</span>;
 <span class='attribute'>#[<span class='ident'>macro_use</span>]</span>
@@ -2225,7 +2223,7 @@
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>borrow</span>::<span class='ident'>ToOwned</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>cell</span>::{<span class='ident'>Cell</span>, <span class='ident'>RefCell</span>};
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>cmp</span>::<span class='ident'>max</span>;
-<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::{<span class='ident'>RingBuf</span>, <span class='ident'>HashMap</span>};
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::{<span class='ident'>VecDeque</span>, <span class='ident'>HashMap</span>};
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>fmt</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>old_io</span>::{<span class='ident'>BufferedStream</span>, <span class='ident'>IoResult</span>, <span class='ident'>IoError</span>, <span class='ident'>IoErrorKind</span>};
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>old_io</span>::<span class='ident'>net</span>::<span class='ident'>ip</span>::<span class='ident'>Port</span>;
@@ -2548,7 +2546,7 @@
 <span class='kw'>struct</span> <span class='ident'>InnerConnection</span> {
     <span class='ident'>stream</span>: <span class='ident'>BufferedStream</span><span class='op'>&lt;</span><span class='ident'>MaybeSslStream</span><span class='op'>&lt;</span><span class='ident'>InternalStream</span><span class='op'>&gt;&gt;</span>,
     <span class='ident'>notice_handler</span>: <span class='ident'>Box</span><span class='op'>&lt;</span><span class='ident'>NoticeHandler</span><span class='op'>&gt;</span>,
-    <span class='ident'>notifications</span>: <span class='ident'>RingBuf</span><span class='op'>&lt;</span><span class='ident'>Notification</span><span class='op'>&gt;</span>,
+    <span class='ident'>notifications</span>: <span class='ident'>VecDeque</span><span class='op'>&lt;</span><span class='ident'>Notification</span><span class='op'>&gt;</span>,
     <span class='ident'>cancel_data</span>: <span class='ident'>CancelData</span>,
     <span class='ident'>unknown_types</span>: <span class='ident'>HashMap</span><span class='op'>&lt;</span><span class='ident'>Oid</span>, <span class='ident'>Type</span><span class='op'>&gt;</span>,
     <span class='ident'>cached_statements</span>: <span class='ident'>HashMap</span><span class='op'>&lt;</span><span class='ident'>String</span>, <span class='ident'>CachedStatement</span><span class='op'>&gt;</span>,
@@ -2582,7 +2580,7 @@
             <span class='ident'>stream</span>: <span class='ident'>BufferedStream</span>::<span class='ident'>new</span>(<span class='ident'>stream</span>),
             <span class='ident'>next_stmt_id</span>: <span class='number'>0</span>,
             <span class='ident'>notice_handler</span>: <span class='ident'>Box</span>::<span class='ident'>new</span>(<span class='ident'>DefaultNoticeHandler</span>),
-            <span class='ident'>notifications</span>: <span class='ident'>RingBuf</span>::<span class='ident'>new</span>(),
+            <span class='ident'>notifications</span>: <span class='ident'>VecDeque</span>::<span class='ident'>new</span>(),
             <span class='ident'>cancel_data</span>: <span class='ident'>CancelData</span> { <span class='ident'>process_id</span>: <span class='number'>0</span>, <span class='ident'>secret_key</span>: <span class='number'>0</span> },
             <span class='ident'>unknown_types</span>: <span class='ident'>HashMap</span>::<span class='ident'>new</span>(),
             <span class='ident'>cached_statements</span>: <span class='ident'>HashMap</span>::<span class='ident'>new</span>(),
@@ -3530,7 +3528,7 @@
 
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>result</span> <span class='op'>=</span> <span class='ident'>Rows</span> {
             <span class='ident'>stmt</span>: <span class='self'>self</span>,
-            <span class='ident'>data</span>: <span class='ident'>RingBuf</span>::<span class='ident'>new</span>(),
+            <span class='ident'>data</span>: <span class='ident'>VecDeque</span>::<span class='ident'>new</span>(),
         };
         <span class='kw'>let</span> <span class='ident'>more_rows</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>result</span>.<span class='ident'>read_rows</span>());
 
@@ -3719,7 +3717,7 @@
 <span class='doccomment'>/// An iterator over the resulting rows of a query.</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Rows</span><span class='op'>&lt;</span><span class='lifetime'>&#39;stmt</span><span class='op'>&gt;</span> {
     <span class='ident'>stmt</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;stmt</span> <span class='ident'>Statement</span><span class='op'>&lt;</span><span class='lifetime'>&#39;stmt</span><span class='op'>&gt;</span>,
-    <span class='ident'>data</span>: <span class='ident'>RingBuf</span><span class='op'>&lt;</span><span class='ident'>Vec</span><span class='op'>&lt;</span><span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>u8</span><span class='op'>&gt;&gt;</span><span class='op'>&gt;&gt;</span>,
+    <span class='ident'>data</span>: <span class='ident'>VecDeque</span><span class='op'>&lt;</span><span class='ident'>Vec</span><span class='op'>&lt;</span><span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>u8</span><span class='op'>&gt;&gt;</span><span class='op'>&gt;&gt;</span>,
 }
 
 <span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> <span class='ident'>fmt</span>::<span class='ident'>Debug</span> <span class='kw'>for</span> <span class='ident'>Rows</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> {
