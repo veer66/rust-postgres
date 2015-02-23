@@ -2140,18 +2140,6 @@
 <span id="2098">2098</span>
 <span id="2099">2099</span>
 <span id="2100">2100</span>
-<span id="2101">2101</span>
-<span id="2102">2102</span>
-<span id="2103">2103</span>
-<span id="2104">2104</span>
-<span id="2105">2105</span>
-<span id="2106">2106</span>
-<span id="2107">2107</span>
-<span id="2108">2108</span>
-<span id="2109">2109</span>
-<span id="2110">2110</span>
-<span id="2111">2111</span>
-<span id="2112">2112</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! Rust-Postgres is a pure-Rust frontend for the popular PostgreSQL database. It</span>
 <span class='doccomment'>//! exposes a high level interface in the vein of JDBC or Go&#39;s `database/sql`</span>
@@ -2255,7 +2243,6 @@
 <span class='kw'>mod</span> <span class='ident'>util</span>;
 <span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>types</span>;
 
-<span class='kw'>const</span> <span class='ident'>CANARY</span>: <span class='ident'>u32</span> <span class='op'>=</span> <span class='number'>0xdeadbeef</span>;
 <span class='kw'>const</span> <span class='ident'>TYPEINFO_QUERY</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;static</span> <span class='ident'>str</span> <span class='op'>=</span> <span class='string'>&quot;t&quot;</span>;
 
 <span class='doccomment'>/// A type alias of the result returned by many methods.</span>
@@ -2553,7 +2540,6 @@
     <span class='ident'>parameters</span>: <span class='ident'>HashMap</span><span class='op'>&lt;</span><span class='ident'>String</span>, <span class='ident'>String</span><span class='op'>&gt;</span>,
     <span class='ident'>next_stmt_id</span>: <span class='ident'>u32</span>,
     <span class='ident'>trans_depth</span>: <span class='ident'>u32</span>,
-    <span class='ident'>canary</span>: <span class='ident'>u32</span>,
     <span class='ident'>desynchronized</span>: <span class='ident'>bool</span>,
     <span class='ident'>finished</span>: <span class='ident'>bool</span>,
 }
@@ -2588,7 +2574,6 @@
             <span class='ident'>desynchronized</span>: <span class='boolval'>false</span>,
             <span class='ident'>finished</span>: <span class='boolval'>false</span>,
             <span class='ident'>trans_depth</span>: <span class='number'>0</span>,
-            <span class='ident'>canary</span>: <span class='ident'>CANARY</span>,
         };
 
         <span class='ident'>options</span>.<span class='ident'>push</span>((<span class='string'>&quot;client_encoding&quot;</span>.<span class='ident'>to_owned</span>(), <span class='string'>&quot;UTF8&quot;</span>.<span class='ident'>to_owned</span>()));
@@ -2952,10 +2937,6 @@
         <span class='self'>self</span>.<span class='ident'>desynchronized</span>
     }
 
-    <span class='kw'>fn</span> <span class='ident'>canary</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>u32</span> {
-        <span class='self'>self</span>.<span class='ident'>canary</span>
-    }
-
     <span class='kw'>fn</span> <span class='ident'>wait_for_ready</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span>()<span class='op'>&gt;</span> {
         <span class='kw'>match</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='self'>self</span>.<span class='ident'>read_message</span>()) {
             <span class='ident'>ReadyForQuery</span> { .. } <span class='op'>=&gt;</span> <span class='prelude-val'>Ok</span>(()),
@@ -2995,7 +2976,6 @@
 
     <span class='kw'>fn</span> <span class='ident'>finish_inner</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span>()<span class='op'>&gt;</span> {
         <span class='macro'>check_desync</span><span class='macro'>!</span>(<span class='self'>self</span>);
-        <span class='self'>self</span>.<span class='ident'>canary</span> <span class='op'>=</span> <span class='number'>0</span>;
         <span class='macro'>try</span><span class='macro'>!</span>(<span class='self'>self</span>.<span class='ident'>write_messages</span>(<span class='kw-2'>&amp;</span>[<span class='ident'>Terminate</span>]));
         <span class='prelude-val'>Ok</span>(())
     }
@@ -3295,10 +3275,6 @@
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>conn</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>conn</span>.<span class='ident'>borrow_mut</span>();
         <span class='ident'>conn</span>.<span class='ident'>finished</span> <span class='op'>=</span> <span class='boolval'>true</span>;
         <span class='ident'>conn</span>.<span class='ident'>finish_inner</span>()
-    }
-
-    <span class='kw'>fn</span> <span class='ident'>canary</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>u32</span> {
-        <span class='self'>self</span>.<span class='ident'>conn</span>.<span class='ident'>borrow</span>().<span class='ident'>canary</span>()
     }
 
     <span class='kw'>fn</span> <span class='ident'>write_messages</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>messages</span>: <span class='kw-2'>&amp;</span>[<span class='ident'>FrontendMessage</span>]) <span class='op'>-&gt;</span> <span class='ident'>IoResult</span><span class='op'>&lt;</span>()<span class='op'>&gt;</span> {
