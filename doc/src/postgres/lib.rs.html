@@ -3640,7 +3640,7 @@
         <span class='kw'>let</span> <span class='ident'>conn</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>conn</span>.<span class='ident'>conn</span>.<span class='ident'>borrow</span>();
         <span class='macro'>check_desync</span><span class='macro'>!</span>(<span class='ident'>conn</span>);
         <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>conn</span>.<span class='ident'>trans_depth</span> <span class='op'>==</span> <span class='ident'>trans</span>.<span class='ident'>depth</span>,
-                <span class='string'>&quot;`lazy_query` may only be called on the active transaction&quot;</span>);
+                <span class='string'>&quot;`lazy_query` must be passed the active transaction&quot;</span>);
         <span class='ident'>drop</span>(<span class='ident'>conn</span>);
 
         <span class='kw'>let</span> <span class='ident'>id</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>next_portal_id</span>.<span class='ident'>get</span>();
