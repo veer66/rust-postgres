@@ -2292,9 +2292,6 @@
 <span id="2250">2250</span>
 <span id="2251">2251</span>
 <span id="2252">2252</span>
-<span id="2253">2253</span>
-<span id="2254">2254</span>
-<span id="2255">2255</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! Rust-Postgres is a pure-Rust frontend for the popular PostgreSQL database. It</span>
 <span class='doccomment'>//! exposes a high level interface in the vein of JDBC or Go&#39;s `database/sql`</span>
@@ -4211,10 +4208,7 @@
                 <span class='ident'>max_rows</span>: <span class='self'>self</span>.<span class='ident'>row_limit</span>
             },
             <span class='ident'>Sync</span>]));
-        <span class='ident'>read_rows</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>conn</span>, <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>.<span class='ident'>data</span>).<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>more_rows</span><span class='op'>|</span> {
-            <span class='self'>self</span>.<span class='ident'>more_rows</span> <span class='op'>=</span> <span class='ident'>more_rows</span>;
-            ()
-        })
+        <span class='ident'>read_rows</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>conn</span>, <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>.<span class='ident'>data</span>).<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>more_rows</span><span class='op'>|</span> <span class='self'>self</span>.<span class='ident'>more_rows</span> <span class='op'>=</span> <span class='ident'>more_rows</span>)
     }
 
     <span class='doccomment'>/// Returns a slice describing the columns of the `LazyRows`.</span>
