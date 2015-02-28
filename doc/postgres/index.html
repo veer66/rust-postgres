@@ -43,22 +43,18 @@
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>postgres</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' href='../src/postgres/lib.rs.html#1-2100'>[src]</a></span></h1>
+        </span><a id='src-0' href='../src/postgres/lib.rs.html#1-2258'>[src]</a></span></h1>
 <div class='docblock'><p>Rust-Postgres is a pure-Rust frontend for the popular PostgreSQL database. It
 exposes a high level interface in the vein of JDBC or Go&#39;s <code>database/sql</code>
 package.</p>
 <pre id='rust-example-rendered' class='rust '>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>postgres</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>time</span>;
-
-<span class='kw'>use</span> <span class='ident'>time</span>::<span class='ident'>Timespec</span>;
 
 <span class='kw'>use</span> <span class='ident'>postgres</span>::{<span class='ident'>Connection</span>, <span class='ident'>SslMode</span>};
 
 <span class='kw'>struct</span> <span class='ident'>Person</span> {
     <span class='ident'>id</span>: <span class='ident'>i32</span>,
     <span class='ident'>name</span>: <span class='ident'>String</span>,
-    <span class='ident'>time_created</span>: <span class='ident'>Timespec</span>,
     <span class='ident'>data</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>u8</span><span class='op'>&gt;&gt;</span>
 }
 
@@ -69,26 +65,22 @@ package.</p>
     <span class='ident'>conn</span>.<span class='ident'>execute</span>(<span class='string'>&quot;CREATE TABLE person (
                     id              SERIAL PRIMARY KEY,
                     name            VARCHAR NOT NULL,
-                    time_created    TIMESTAMP NOT NULL,
                     data            BYTEA
                   )&quot;</span>, <span class='kw-2'>&amp;</span>[]).<span class='ident'>unwrap</span>();
     <span class='kw'>let</span> <span class='ident'>me</span> <span class='op'>=</span> <span class='ident'>Person</span> {
         <span class='ident'>id</span>: <span class='number'>0</span>,
         <span class='ident'>name</span>: <span class='string'>&quot;Steven&quot;</span>.<span class='ident'>to_string</span>(),
-        <span class='ident'>time_created</span>: <span class='ident'>time</span>::<span class='ident'>get_time</span>(),
         <span class='ident'>data</span>: <span class='prelude-val'>None</span>
     };
-    <span class='ident'>conn</span>.<span class='ident'>execute</span>(<span class='string'>&quot;INSERT INTO person (name, time_created, data) VALUES ($1, $2, $3)&quot;</span>,
-                 <span class='kw-2'>&amp;</span>[<span class='kw-2'>&amp;</span><span class='ident'>me</span>.<span class='ident'>name</span>, <span class='kw-2'>&amp;</span><span class='ident'>me</span>.<span class='ident'>time_created</span>, <span class='kw-2'>&amp;</span><span class='ident'>me</span>.<span class='ident'>data</span>]).<span class='ident'>unwrap</span>();
+    <span class='ident'>conn</span>.<span class='ident'>execute</span>(<span class='string'>&quot;INSERT INTO person (name, data) VALUES ($1, $2)&quot;</span>,
+                 <span class='kw-2'>&amp;</span>[<span class='kw-2'>&amp;</span><span class='ident'>me</span>.<span class='ident'>name</span>, <span class='kw-2'>&amp;</span><span class='ident'>me</span>.<span class='ident'>data</span>]).<span class='ident'>unwrap</span>();
 
-    <span class='kw'>let</span> <span class='ident'>stmt</span> <span class='op'>=</span> <span class='ident'>conn</span>.<span class='ident'>prepare</span>(<span class='string'>&quot;SELECT id, name, time_created, data FROM person&quot;</span>)
-            .<span class='ident'>unwrap</span>();
+    <span class='kw'>let</span> <span class='ident'>stmt</span> <span class='op'>=</span> <span class='ident'>conn</span>.<span class='ident'>prepare</span>(<span class='string'>&quot;SELECT id, name, data FROM person&quot;</span>).<span class='ident'>unwrap</span>();
     <span class='kw'>for</span> <span class='ident'>row</span> <span class='kw'>in</span> <span class='ident'>stmt</span>.<span class='ident'>query</span>(<span class='kw-2'>&amp;</span>[]).<span class='ident'>unwrap</span>() {
         <span class='kw'>let</span> <span class='ident'>person</span> <span class='op'>=</span> <span class='ident'>Person</span> {
             <span class='ident'>id</span>: <span class='ident'>row</span>.<span class='ident'>get</span>(<span class='number'>0</span>),
             <span class='ident'>name</span>: <span class='ident'>row</span>.<span class='ident'>get</span>(<span class='number'>1</span>),
-            <span class='ident'>time_created</span>: <span class='ident'>row</span>.<span class='ident'>get</span>(<span class='number'>2</span>),
-            <span class='ident'>data</span>: <span class='ident'>row</span>.<span class='ident'>get</span>(<span class='number'>3</span>)
+            <span class='ident'>data</span>: <span class='ident'>row</span>.<span class='ident'>get</span>(<span class='number'>2</span>)
         };
         <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Found person {}&quot;</span>, <span class='ident'>person</span>.<span class='ident'>name</span>);
     }
@@ -101,6 +93,19 @@ package.</p>
                                title='postgres::types'>types</a></td>
                         <td class='docblock short'><p>Traits dealing with Postgres data types</p>
 </td>
+                    </tr>
+                </table><h2 id='macros' class='section-header'><a href="#macros">Macros</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='macro' href='macro.accepts!.html'
+                               title='postgres::accepts!'>accepts!</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='macro' href='macro.to_sql_checked!.html'
+                               title='postgres::to_sql_checked!'>to_sql_checked!</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
@@ -147,16 +152,16 @@ package.</p>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.DefaultNoticeHandler.html'
-                               title='postgres::DefaultNoticeHandler'>DefaultNoticeHandler</a></td>
-                        <td class='docblock short'><p>A notice handler which logs at the <code>info</code> level.</p>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LazyRows.html'
+                               title='postgres::LazyRows'>LazyRows</a></td>
+                        <td class='docblock short'><p>A lazily-loaded iterator over the resulting rows of a query</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LazyRows.html'
-                               title='postgres::LazyRows'>LazyRows</a></td>
-                        <td class='docblock short'><p>A lazily-loaded iterator over the resulting rows of a query</p>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.LoggingNoticeHandler.html'
+                               title='postgres::LoggingNoticeHandler'>LoggingNoticeHandler</a></td>
+                        <td class='docblock short'><p>A notice handler which logs at the <code>info</code> level.</p>
 </td>
                     </tr>
                 
@@ -184,7 +189,21 @@ package.</p>
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Rows.html'
                                title='postgres::Rows'>Rows</a></td>
-                        <td class='docblock short'><p>An iterator over the resulting rows of a query.</p>
+                        <td class='docblock short'><p>The resulting rows of a query.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RowsIntoIter.html'
+                               title='postgres::RowsIntoIter'>RowsIntoIter</a></td>
+                        <td class='docblock short'><p>An owning iterator over <code>Row</code>s.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.RowsIter.html'
+                               title='postgres::RowsIter'>RowsIter</a></td>
+                        <td class='docblock short'><p>An iterator over <code>Row</code>s.</p>
 </td>
                     </tr>
                 
@@ -253,6 +272,13 @@ package.</p>
                     </tr>
                 
                     <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Kind.html'
+                               title='postgres::Kind'>Kind</a></td>
+                        <td class='docblock short'><p>Represents the kind of a Postgres type.</p>
+</td>
+                    </tr>
+                
+                    <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.SqlState.html'
                                title='postgres::SqlState'>SqlState</a></td>
                         <td class='docblock short'><p>SQLSTATE error codes</p>
@@ -277,7 +303,7 @@ package.</p>
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.FromSql.html'
                                title='postgres::FromSql'>FromSql</a></td>
-                        <td class='docblock short'><p>A trait for types that can be created from a Postgres value</p>
+                        <td class='docblock short'><p>A trait for types that can be created from a Postgres value.</p>
 </td>
                     </tr>
                 
@@ -289,16 +315,16 @@ package.</p>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.IntoConnectParams.html'
-                               title='postgres::IntoConnectParams'>IntoConnectParams</a></td>
-                        <td class='docblock short'><p>A trait implemented by types that can be converted into a <code>ConnectParams</code>.</p>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.HandleNotice.html'
+                               title='postgres::HandleNotice'>HandleNotice</a></td>
+                        <td class='docblock short'><p>Trait for types that can handle Postgres notice messages</p>
 </td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.NoticeHandler.html'
-                               title='postgres::NoticeHandler'>NoticeHandler</a></td>
-                        <td class='docblock short'><p>Trait for types that can handle Postgres notice messages</p>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.IntoConnectParams.html'
+                               title='postgres::IntoConnectParams'>IntoConnectParams</a></td>
+                        <td class='docblock short'><p>A trait implemented by types that can be converted into a <code>ConnectParams</code>.</p>
 </td>
                     </tr>
                 
@@ -319,7 +345,7 @@ package.</p>
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.ToSql.html'
                                title='postgres::ToSql'>ToSql</a></td>
-                        <td class='docblock short'><p>A trait for types that can be converted into Postgres values</p>
+                        <td class='docblock short'><p>A trait for types that can be converted into Postgres values.</p>
 </td>
                     </tr>
                 </table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
