@@ -43,11 +43,11 @@
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>postgres</a>::<wbr><a class='struct' href=''>LazyRows</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-39252' href='../src/postgres/lib.rs.html#1872-1880'>[src]</a></span></h1>
+        </span><a id='src-39252' href='../src/postgres/lib.rs.html#1869-1877'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct LazyRows&lt;'trans, 'stmt&gt; {
     // some fields omitted
 }</pre><div class='docblock'><p>A lazily-loaded iterator over the resulting rows of a query</p>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'trans, 'stmt&gt; <a class='struct' href='../postgres/struct.LazyRows.html' title='postgres::LazyRows'>LazyRows</a>&lt;'trans, 'stmt&gt;</code></h3><div class='impl-items'><h4 id='method.columns' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.columns' class='fnname'>columns</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;[</a><a class='struct' href='../postgres/struct.Column.html' title='postgres::Column'>Column</a><a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a></code></h4>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'trans, 'stmt&gt; <a class='struct' href='../postgres/struct.LazyRows.html' title='postgres::LazyRows'>LazyRows</a>&lt;'trans, 'stmt&gt;</code></h3><div class='impl-items'><h4 id='method.columns' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.columns' class='fnname'>columns</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;'stmt [</a><a class='struct' href='../postgres/struct.Column.html' title='postgres::Column'>Column</a><a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a></code></h4>
 <div class='docblock'><p>Returns a slice describing the columns of the <code>LazyRows</code>.</p>
 </div><h4 id='method.finish' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.finish' class='fnname'>finish</a>(self) -&gt; <a class='type' href='../postgres/type.Result.html' title='postgres::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></h4>
 <div class='docblock'><p>Consumes the <code>LazyRows</code>, cleaning up associated state.</p>

@@ -2295,9 +2295,6 @@
 <span id="2253">2253</span>
 <span id="2254">2254</span>
 <span id="2255">2255</span>
-<span id="2256">2256</span>
-<span id="2257">2257</span>
-<span id="2258">2258</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! Rust-Postgres is a pure-Rust frontend for the popular PostgreSQL database. It</span>
 <span class='doccomment'>//! exposes a high level interface in the vein of JDBC or Go&#39;s `database/sql`</span>
@@ -3929,10 +3926,7 @@
 
 <span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> <span class='ident'>fmt</span>::<span class='ident'>Debug</span> <span class='kw'>for</span> <span class='ident'>Rows</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> {
     <span class='kw'>fn</span> <span class='ident'>fmt</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>fmt</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>fmt</span>::<span class='ident'>Formatter</span>) <span class='op'>-&gt;</span> <span class='ident'>fmt</span>::<span class='prelude-ty'>Result</span> {
-        <span class='macro'>write</span><span class='macro'>!</span>(<span class='ident'>fmt</span>,
-               <span class='string'>&quot;Rows {{ columns: {:?}, rows: {:?} }}&quot;</span>,
-               <span class='self'>self</span>.<span class='ident'>columns</span>(),
-               <span class='self'>self</span>.<span class='ident'>data</span>.<span class='ident'>len</span>())
+        <span class='macro'>write</span><span class='macro'>!</span>(<span class='ident'>fmt</span>, <span class='string'>&quot;Rows {{ columns: {:?}, rows: {:?} }}&quot;</span>, <span class='self'>self</span>.<span class='ident'>columns</span>(), <span class='self'>self</span>.<span class='ident'>data</span>.<span class='ident'>len</span>())
     }
 }
 
@@ -4224,7 +4218,7 @@
     }
 
     <span class='doccomment'>/// Returns a slice describing the columns of the `LazyRows`.</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>columns</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='kw-2'>&amp;</span>[<span class='ident'>Column</span>] {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>columns</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;stmt</span> [<span class='ident'>Column</span>] {
         <span class='self'>self</span>.<span class='ident'>stmt</span>.<span class='ident'>columns</span>()
     }
 
