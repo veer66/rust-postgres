@@ -888,6 +888,11 @@
 <span id="846">846</span>
 <span id="847">847</span>
 <span id="848">848</span>
+<span id="849">849</span>
+<span id="850">850</span>
+<span id="851">851</span>
+<span id="852">852</span>
+<span id="853">853</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! Traits dealing with Postgres data types</span>
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='self'>self</span>::<span class='ident'>slice</span>::<span class='ident'>Slice</span>;
@@ -913,6 +918,8 @@
 
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>ugh_privacy</span>::<span class='ident'>Other</span>;
 
+<span class='doccomment'>/// Generates a simple implementation of `ToSql::accepts` which accepts the</span>
+<span class='doccomment'>/// types passed to it.</span>
 <span class='attribute'>#[<span class='ident'>macro_export</span>]</span>
 <span class='macro'>macro_rules</span><span class='macro'>!</span> <span class='ident'>accepts</span> {
     ($(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>expected</span>:<span class='ident'>pat</span>),<span class='op'>+</span>) <span class='op'>=&gt;</span> (
@@ -925,6 +932,9 @@
     )
 }
 
+<span class='doccomment'>/// Generates an implementation of `ToSql::to_sql_checked`.</span>
+<span class='doccomment'>///</span>
+<span class='doccomment'>/// All `ToSql` implementations should use this macro.</span>
 <span class='attribute'>#[<span class='ident'>macro_export</span>]</span>
 <span class='macro'>macro_rules</span><span class='macro'>!</span> <span class='ident'>to_sql_checked</span> {
     () <span class='op'>=&gt;</span> {
