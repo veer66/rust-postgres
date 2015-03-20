@@ -2299,8 +2299,6 @@
 <span id="2257">2257</span>
 <span id="2258">2258</span>
 <span id="2259">2259</span>
-<span id="2260">2260</span>
-<span id="2261">2261</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! Rust-Postgres is a pure-Rust frontend for the popular PostgreSQL database. It</span>
 <span class='doccomment'>//! exposes a high level interface in the vein of JDBC or Go&#39;s `database/sql`</span>
@@ -2347,7 +2345,7 @@
 <span class='doccomment'>//! }</span>
 <span class='doccomment'>//! ```</span>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>doc</span>(<span class='ident'>html_root_url</span><span class='op'>=</span><span class='string'>&quot;https://sfackler.github.io/rust-postgres/doc&quot;</span>)]</span>
-<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>feature</span>(<span class='ident'>unsafe_destructor</span>, <span class='ident'>collections</span>, <span class='ident'>io</span>, <span class='ident'>core</span>, <span class='ident'>net</span>, <span class='ident'>debug_builders</span>)]</span>
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>feature</span>(<span class='ident'>unsafe_destructor</span>, <span class='ident'>collections</span>, <span class='ident'>io</span>, <span class='ident'>core</span>, <span class='ident'>debug_builders</span>)]</span>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>warn</span>(<span class='ident'>missing_docs</span>)]</span>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>no_implicit_prelude</span>]</span>
 
@@ -2371,8 +2369,6 @@
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>iter</span>::{<span class='ident'>Iterator</span>, <span class='ident'>DoubleEndedIterator</span>, <span class='ident'>ExactSizeIterator</span>, <span class='ident'>IteratorExt</span>};
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>prelude</span>::<span class='ident'>v1</span>::<span class='ident'>drop</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>marker</span>::<span class='ident'>Send</span>;
-<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>slice</span>::<span class='ident'>SliceExt</span>;
-<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>str</span>::<span class='ident'>StrExt</span>;
 
 <span class='kw'>use</span> <span class='ident'>openssl</span>::<span class='ident'>crypto</span>::<span class='ident'>hash</span>::{<span class='self'>self</span>, <span class='ident'>Hasher</span>};
 <span class='kw'>use</span> <span class='ident'>openssl</span>::<span class='ident'>ssl</span>::{<span class='ident'>SslContext</span>, <span class='ident'>MaybeSslStream</span>};
