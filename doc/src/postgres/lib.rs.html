@@ -4099,7 +4099,7 @@
     <span class='doccomment'>/// # let stmt = conn.prepare(&quot;&quot;).unwrap();</span>
     <span class='doccomment'>/// # let mut result = stmt.query(&amp;[]).unwrap();</span>
     <span class='doccomment'>/// # let row = result.iter().next().unwrap();</span>
-    <span class='doccomment'>/// let foo: i32 = row.get(0u);</span>
+    <span class='doccomment'>/// let foo: i32 = row.get(0);</span>
     <span class='doccomment'>/// let bar: String = row.get(&quot;bar&quot;);</span>
     <span class='doccomment'>/// ```</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>get</span><span class='op'>&lt;</span><span class='ident'>I</span>, <span class='ident'>T</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>idx</span>: <span class='ident'>I</span>) <span class='op'>-&gt;</span> <span class='ident'>T</span> <span class='kw'>where</span> <span class='ident'>I</span>: <span class='ident'>RowIndex</span> <span class='op'>+</span> <span class='ident'>fmt</span>::<span class='ident'>Debug</span> <span class='op'>+</span> <span class='ident'>Clone</span>, <span class='ident'>T</span>: <span class='ident'>FromSql</span> {

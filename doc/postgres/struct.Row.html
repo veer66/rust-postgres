@@ -72,7 +72,7 @@ not compatible with the Postgres type.</p>
 
 <h2 id="example" class='section-header'><a
                            href="#example">Example</a></h2><pre id='rust-example-rendered' class='rust '>
-<span class='kw'>let</span> <span class='ident'>foo</span>: <span class='ident'>i32</span> <span class='op'>=</span> <span class='ident'>row</span>.<span class='ident'>get</span>(<span class='number'>0u</span>);
+<span class='kw'>let</span> <span class='ident'>foo</span>: <span class='ident'>i32</span> <span class='op'>=</span> <span class='ident'>row</span>.<span class='ident'>get</span>(<span class='number'>0</span>);
 <span class='kw'>let</span> <span class='ident'>bar</span>: <span class='ident'>String</span> <span class='op'>=</span> <span class='ident'>row</span>.<span class='ident'>get</span>(<span class='string'>&quot;bar&quot;</span>);
 </pre>
 </div><h4 id='method.get_bytes' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.get_bytes' class='fnname'>get_bytes</a>&lt;I&gt;(&amp;self, idx: I) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;[</a><a href='http://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a><a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>&gt; <span class='where'>where I: <a class='trait' href='../postgres/trait.RowIndex.html' title='postgres::RowIndex'>RowIndex</a> + <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a></span></code></h4>
