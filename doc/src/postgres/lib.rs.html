@@ -2286,6 +2286,11 @@
 <span id="2244">2244</span>
 <span id="2245">2245</span>
 <span id="2246">2246</span>
+<span id="2247">2247</span>
+<span id="2248">2248</span>
+<span id="2249">2249</span>
+<span id="2250">2250</span>
+<span id="2251">2251</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! Rust-Postgres is a pure-Rust frontend for the popular PostgreSQL database. It</span>
 <span class='doccomment'>//! exposes a high level interface in the vein of JDBC or Go&#39;s `database/sql`</span>
@@ -2459,7 +2464,7 @@
             <span class='ident'>host</span>,
             <span class='ident'>port</span>,
             <span class='ident'>user</span>,
-            <span class='ident'>path</span>: <span class='ident'>url</span>::<span class='ident'>Path</span> { <span class='ident'>path</span>, <span class='ident'>query</span>: <span class='ident'>options</span>, .. },
+            <span class='ident'>path</span>: <span class='ident'>url</span>::<span class='ident'>Path</span> { <span class='kw-2'>mut</span> <span class='ident'>path</span>, <span class='ident'>query</span>: <span class='ident'>options</span>, .. },
             ..
         } <span class='op'>=</span> <span class='self'>self</span>;
 
@@ -2484,8 +2489,13 @@
             <span class='ident'>UserInfo</span> { <span class='ident'>user</span>: <span class='ident'>user</span>, <span class='ident'>password</span>: <span class='ident'>pass</span> }
         });
 
-        <span class='comment'>// path contains the leading /</span>
-        <span class='kw'>let</span> <span class='ident'>database</span> <span class='op'>=</span> <span class='ident'>path</span>.<span class='ident'>slice_shift_char</span>().<span class='ident'>map</span>(<span class='op'>|</span>(_, <span class='ident'>path</span>)<span class='op'>|</span> <span class='ident'>path</span>.<span class='ident'>to_owned</span>());
+        <span class='kw'>let</span> <span class='ident'>database</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='ident'>path</span>.<span class='ident'>is_empty</span>() {
+            <span class='prelude-val'>None</span>
+        } <span class='kw'>else</span> {
+            <span class='comment'>// path contains the leading /</span>
+            <span class='ident'>path</span>.<span class='ident'>remove</span>(<span class='number'>0</span>);
+            <span class='prelude-val'>Some</span>(<span class='ident'>path</span>)
+        };
 
         <span class='prelude-val'>Ok</span>(<span class='ident'>ConnectParams</span> {
             <span class='ident'>target</span>: <span class='ident'>target</span>,
