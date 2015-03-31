@@ -2296,6 +2296,8 @@
 <span id="2254">2254</span>
 <span id="2255">2255</span>
 <span id="2256">2256</span>
+<span id="2257">2257</span>
+<span id="2258">2258</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! Rust-Postgres is a pure-Rust frontend for the popular PostgreSQL database. It</span>
 <span class='doccomment'>//! exposes a high level interface in the vein of JDBC or Go&#39;s `database/sql`</span>
@@ -2342,7 +2344,7 @@
 <span class='doccomment'>//! }</span>
 <span class='doccomment'>//! ```</span>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>doc</span>(<span class='ident'>html_root_url</span><span class='op'>=</span><span class='string'>&quot;https://sfackler.github.io/rust-postgres/doc&quot;</span>)]</span>
-<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>feature</span>(<span class='ident'>unsafe_destructor</span>, <span class='ident'>io</span>, <span class='ident'>core</span>, <span class='ident'>debug_builders</span>, <span class='ident'>str_char</span>)]</span>
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>feature</span>(<span class='ident'>unsafe_destructor</span>, <span class='ident'>io</span>, <span class='ident'>core</span>, <span class='ident'>str_char</span>)]</span>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>cfg_attr</span>(<span class='ident'>feature</span> <span class='op'>=</span> <span class='string'>&quot;unix_socket&quot;</span>, <span class='ident'>feature</span>(<span class='ident'>convert</span>))]</span>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>warn</span>(<span class='ident'>missing_docs</span>)]</span>
 
@@ -2354,7 +2356,9 @@
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>rustc_serialize</span> <span class='kw'>as</span> <span class='ident'>serialize</span>;
 <span class='attribute'>#[<span class='ident'>cfg</span>(<span class='ident'>feature</span> <span class='op'>=</span> <span class='string'>&quot;unix_socket&quot;</span>)]</span>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>unix_socket</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>debug_builders</span>;
 
+<span class='kw'>use</span> <span class='ident'>debug_builders</span>::<span class='ident'>DebugStruct</span>;
 <span class='kw'>use</span> <span class='ident'>openssl</span>::<span class='ident'>crypto</span>::<span class='ident'>hash</span>::{<span class='self'>self</span>, <span class='ident'>Hasher</span>};
 <span class='kw'>use</span> <span class='ident'>openssl</span>::<span class='ident'>ssl</span>::{<span class='ident'>SslContext</span>, <span class='ident'>MaybeSslStream</span>};
 <span class='kw'>use</span> <span class='ident'>serialize</span>::<span class='ident'>hex</span>::<span class='ident'>ToHex</span>;
@@ -2548,7 +2552,7 @@
 
 <span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> <span class='ident'>fmt</span>::<span class='ident'>Debug</span> <span class='kw'>for</span> <span class='ident'>Notifications</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> {
     <span class='kw'>fn</span> <span class='ident'>fmt</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>fmt</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>fmt</span>::<span class='ident'>Formatter</span>) <span class='op'>-&gt;</span> <span class='ident'>fmt</span>::<span class='prelude-ty'>Result</span> {
-        <span class='ident'>fmt</span>.<span class='ident'>debug_struct</span>(<span class='string'>&quot;Notifications&quot;</span>)
+        <span class='ident'>DebugStruct</span>::<span class='ident'>new</span>(<span class='ident'>fmt</span>, <span class='string'>&quot;Notifications&quot;</span>)
             .<span class='ident'>field</span>(<span class='string'>&quot;pending&quot;</span>, <span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>conn</span>.<span class='ident'>conn</span>.<span class='ident'>borrow</span>().<span class='ident'>notifications</span>.<span class='ident'>len</span>())
             .<span class='ident'>finish</span>()
     }
@@ -3175,7 +3179,7 @@
 <span class='kw'>impl</span> <span class='ident'>fmt</span>::<span class='ident'>Debug</span> <span class='kw'>for</span> <span class='ident'>Connection</span> {
     <span class='kw'>fn</span> <span class='ident'>fmt</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>fmt</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>fmt</span>::<span class='ident'>Formatter</span>) <span class='op'>-&gt;</span> <span class='ident'>fmt</span>::<span class='prelude-ty'>Result</span> {
         <span class='kw'>let</span> <span class='ident'>conn</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>conn</span>.<span class='ident'>borrow</span>();
-        <span class='ident'>fmt</span>.<span class='ident'>debug_struct</span>(<span class='string'>&quot;Connection&quot;</span>)
+        <span class='ident'>DebugStruct</span>::<span class='ident'>new</span>(<span class='ident'>fmt</span>, <span class='string'>&quot;Connection&quot;</span>)
             .<span class='ident'>field</span>(<span class='string'>&quot;cancel_data&quot;</span>, <span class='kw-2'>&amp;</span><span class='ident'>conn</span>.<span class='ident'>cancel_data</span>)
             .<span class='ident'>field</span>(<span class='string'>&quot;notifications&quot;</span>, <span class='kw-2'>&amp;</span><span class='ident'>conn</span>.<span class='ident'>notifications</span>.<span class='ident'>len</span>())
             .<span class='ident'>field</span>(<span class='string'>&quot;transaction_depth&quot;</span>, <span class='kw-2'>&amp;</span><span class='ident'>conn</span>.<span class='ident'>trans_depth</span>)
@@ -3488,7 +3492,7 @@
 
 <span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> <span class='ident'>fmt</span>::<span class='ident'>Debug</span> <span class='kw'>for</span> <span class='ident'>Transaction</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> {
     <span class='kw'>fn</span> <span class='ident'>fmt</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>fmt</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>fmt</span>::<span class='ident'>Formatter</span>) <span class='op'>-&gt;</span> <span class='ident'>fmt</span>::<span class='prelude-ty'>Result</span> {
-        <span class='ident'>fmt</span>.<span class='ident'>debug_struct</span>(<span class='string'>&quot;Transaction&quot;</span>)
+        <span class='ident'>DebugStruct</span>::<span class='ident'>new</span>(<span class='ident'>fmt</span>, <span class='string'>&quot;Transaction&quot;</span>)
             .<span class='ident'>field</span>(<span class='string'>&quot;commit&quot;</span>, <span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>commit</span>.<span class='ident'>get</span>())
             .<span class='ident'>field</span>(<span class='string'>&quot;depth&quot;</span>, <span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>depth</span>)
             .<span class='ident'>finish</span>()
@@ -3619,7 +3623,7 @@
 
 <span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> <span class='ident'>fmt</span>::<span class='ident'>Debug</span> <span class='kw'>for</span> <span class='ident'>Statement</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> {
     <span class='kw'>fn</span> <span class='ident'>fmt</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>fmt</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>fmt</span>::<span class='ident'>Formatter</span>) <span class='op'>-&gt;</span> <span class='ident'>fmt</span>::<span class='prelude-ty'>Result</span> {
-        <span class='ident'>fmt</span>.<span class='ident'>debug_struct</span>(<span class='string'>&quot;Statement&quot;</span>)
+        <span class='ident'>DebugStruct</span>::<span class='ident'>new</span>(<span class='ident'>fmt</span>, <span class='string'>&quot;Statement&quot;</span>)
             .<span class='ident'>field</span>(<span class='string'>&quot;name&quot;</span>, <span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>name</span>)
             .<span class='ident'>field</span>(<span class='string'>&quot;parameter_types&quot;</span>, <span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>param_types</span>)
             .<span class='ident'>field</span>(<span class='string'>&quot;columns&quot;</span>, <span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>columns</span>)
@@ -3924,7 +3928,7 @@
 
 <span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> <span class='ident'>fmt</span>::<span class='ident'>Debug</span> <span class='kw'>for</span> <span class='ident'>Rows</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> {
     <span class='kw'>fn</span> <span class='ident'>fmt</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>fmt</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>fmt</span>::<span class='ident'>Formatter</span>) <span class='op'>-&gt;</span> <span class='ident'>fmt</span>::<span class='prelude-ty'>Result</span> {
-        <span class='ident'>fmt</span>.<span class='ident'>debug_struct</span>(<span class='string'>&quot;Rows&quot;</span>)
+        <span class='ident'>DebugStruct</span>::<span class='ident'>new</span>(<span class='ident'>fmt</span>, <span class='string'>&quot;Rows&quot;</span>)
             .<span class='ident'>field</span>(<span class='string'>&quot;columns&quot;</span>, <span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>columns</span>())
             .<span class='ident'>field</span>(<span class='string'>&quot;rows&quot;</span>, <span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>data</span>.<span class='ident'>len</span>())
             .<span class='ident'>finish</span>()
@@ -4067,7 +4071,7 @@
 
 <span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> <span class='ident'>fmt</span>::<span class='ident'>Debug</span> <span class='kw'>for</span> <span class='ident'>Row</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> {
     <span class='kw'>fn</span> <span class='ident'>fmt</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>fmt</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>fmt</span>::<span class='ident'>Formatter</span>) <span class='op'>-&gt;</span> <span class='ident'>fmt</span>::<span class='prelude-ty'>Result</span> {
-        <span class='ident'>fmt</span>.<span class='ident'>debug_struct</span>(<span class='string'>&quot;Row&quot;</span>)
+        <span class='ident'>DebugStruct</span>::<span class='ident'>new</span>(<span class='ident'>fmt</span>, <span class='string'>&quot;Row&quot;</span>)
             .<span class='ident'>field</span>(<span class='string'>&quot;statement&quot;</span>, <span class='self'>self</span>.<span class='ident'>stmt</span>)
             .<span class='ident'>finish</span>()
     }
@@ -4188,7 +4192,7 @@
 
 <span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='lifetime'>&#39;b</span><span class='op'>&gt;</span> <span class='ident'>fmt</span>::<span class='ident'>Debug</span> <span class='kw'>for</span> <span class='ident'>LazyRows</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='lifetime'>&#39;b</span><span class='op'>&gt;</span> {
     <span class='kw'>fn</span> <span class='ident'>fmt</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>fmt</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>fmt</span>::<span class='ident'>Formatter</span>) <span class='op'>-&gt;</span> <span class='ident'>fmt</span>::<span class='prelude-ty'>Result</span> {
-        <span class='ident'>fmt</span>.<span class='ident'>debug_struct</span>(<span class='string'>&quot;LazyRows&quot;</span>)
+        <span class='ident'>DebugStruct</span>::<span class='ident'>new</span>(<span class='ident'>fmt</span>, <span class='string'>&quot;LazyRows&quot;</span>)
             .<span class='ident'>field</span>(<span class='string'>&quot;name&quot;</span>, <span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>name</span>)
             .<span class='ident'>field</span>(<span class='string'>&quot;row_limit&quot;</span>, <span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>row_limit</span>)
             .<span class='ident'>field</span>(<span class='string'>&quot;remaining_rows&quot;</span>, <span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>data</span>.<span class='ident'>len</span>())
@@ -4269,7 +4273,7 @@
 
 <span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> <span class='ident'>fmt</span>::<span class='ident'>Debug</span> <span class='kw'>for</span> <span class='ident'>CopyInStatement</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> {
     <span class='kw'>fn</span> <span class='ident'>fmt</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>fmt</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>fmt</span>::<span class='ident'>Formatter</span>) <span class='op'>-&gt;</span> <span class='ident'>fmt</span>::<span class='prelude-ty'>Result</span> {
-        <span class='ident'>fmt</span>.<span class='ident'>debug_struct</span>(<span class='string'>&quot;CopyInStatement&quot;</span>)
+        <span class='ident'>DebugStruct</span>::<span class='ident'>new</span>(<span class='ident'>fmt</span>, <span class='string'>&quot;CopyInStatement&quot;</span>)
             .<span class='ident'>field</span>(<span class='string'>&quot;name&quot;</span>, <span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>name</span>)
             .<span class='ident'>field</span>(<span class='string'>&quot;column_types&quot;</span>, <span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>column_types</span>)
             .<span class='ident'>finish</span>()
