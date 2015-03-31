@@ -2347,7 +2347,7 @@
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>cell</span>::{<span class='ident'>Cell</span>, <span class='ident'>RefCell</span>};
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::{<span class='ident'>VecDeque</span>, <span class='ident'>HashMap</span>};
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>fmt</span>;
-<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>iter</span>::{<span class='ident'>IntoIterator</span>, <span class='ident'>RandomAccessIterator</span>};
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>iter</span>::<span class='ident'>IntoIterator</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>io</span>::{<span class='self'>self</span>, <span class='ident'>BufStream</span>};
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>io</span>::<span class='ident'>prelude</span>::<span class='op'>*</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>mem</span>;
@@ -3635,7 +3635,7 @@
                 <span class='string'>&quot;expected {} parameters but got {}&quot;</span>,
                 <span class='self'>self</span>.<span class='ident'>param_types</span>.<span class='ident'>len</span>(),
                 <span class='ident'>params</span>.<span class='ident'>len</span>());
-        <span class='macro'>debug</span><span class='macro'>!</span>(<span class='string'>&quot;executing statement {}&quot;</span>, <span class='self'>self</span>.<span class='ident'>name</span>);
+        <span class='macro'>debug</span><span class='macro'>!</span>(<span class='string'>&quot;executing statement {} with parameters: {:?}&quot;</span>, <span class='self'>self</span>.<span class='ident'>name</span>, <span class='ident'>params</span>);
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>values</span> <span class='op'>=</span> <span class='macro'>vec</span><span class='macro'>!</span>[];
         <span class='kw'>for</span> (<span class='ident'>param</span>, <span class='ident'>ty</span>) <span class='kw'>in</span> <span class='ident'>params</span>.<span class='ident'>iter</span>().<span class='ident'>zip</span>(<span class='self'>self</span>.<span class='ident'>param_types</span>.<span class='ident'>iter</span>()) {
             <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>buf</span> <span class='op'>=</span> <span class='macro'>vec</span><span class='macro'>!</span>[];
@@ -4314,7 +4314,7 @@
             <span class='kw'>where</span> <span class='ident'>I</span>: <span class='ident'>Iterator</span><span class='op'>&lt;</span><span class='ident'>Item</span><span class='op'>=</span><span class='ident'>J</span><span class='op'>&gt;</span>, <span class='ident'>J</span>: <span class='ident'>StreamIterator</span> {
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>conn</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>conn</span>.<span class='ident'>conn</span>.<span class='ident'>borrow_mut</span>();
 
-        <span class='macro'>debug</span><span class='macro'>!</span>(<span class='string'>&quot;executing statement {}&quot;</span>, <span class='self'>self</span>.<span class='ident'>name</span>);
+        <span class='macro'>debug</span><span class='macro'>!</span>(<span class='string'>&quot;executing COPY IN statement {}&quot;</span>, <span class='self'>self</span>.<span class='ident'>name</span>);
         <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>conn</span>.<span class='ident'>write_messages</span>(<span class='kw-2'>&amp;</span>[
             <span class='ident'>Bind</span> {
                 <span class='ident'>portal</span>: <span class='string'>&quot;&quot;</span>,
