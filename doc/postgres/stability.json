@@ -1,1 +1,1 @@
-{"name":"postgres","counts":{"deprecated":0,"unstable":1,"stable":92,"unmarked":747},"submodules":[{"name":"types","counts":{"deprecated":0,"unstable":0,"stable":12,"unmarked":184},"submodules":[]}]}
+{"name":"postgres","counts":{"deprecated":0,"unstable":0,"stable":92,"unmarked":747},"submodules":[{"name":"types","counts":{"deprecated":0,"unstable":0,"stable":12,"unmarked":184},"submodules":[]}]}
