@@ -458,8 +458,6 @@
 <span id="416">416</span>
 <span id="417">417</span>
 <span id="418">418</span>
-<span id="419">419</span>
-<span id="420">420</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>io</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>io</span>::<span class='ident'>prelude</span>::<span class='op'>*</span>;
@@ -727,8 +725,7 @@
         <span class='macro'>try</span><span class='macro'>!</span>(<span class='self'>self</span>.<span class='ident'>read_until</span>(<span class='number'>0</span>, <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>buf</span>));
         <span class='ident'>buf</span>.<span class='ident'>pop</span>();
         <span class='ident'>String</span>::<span class='ident'>from_utf8</span>(<span class='ident'>buf</span>).<span class='ident'>map_err</span>(<span class='op'>|</span>_<span class='op'>|</span> <span class='ident'>io</span>::<span class='ident'>Error</span>::<span class='ident'>new</span>(<span class='ident'>io</span>::<span class='ident'>ErrorKind</span>::<span class='ident'>Other</span>,
-                                                          <span class='string'>&quot;received a non-utf8 string from server&quot;</span>,
-                                                          <span class='prelude-val'>None</span>))
+                                                          <span class='string'>&quot;received a non-utf8 string from server&quot;</span>))
     }
 }
 
@@ -784,14 +781,14 @@
             <span class='string'>b&#39;t&#39;</span> <span class='op'>=&gt;</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>read_parameter_description</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>rdr</span>)),
             <span class='string'>b&#39;T&#39;</span> <span class='op'>=&gt;</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>read_row_description</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>rdr</span>)),
             <span class='string'>b&#39;Z&#39;</span> <span class='op'>=&gt;</span> <span class='ident'>ReadyForQuery</span> { <span class='ident'>_state</span>: <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>rdr</span>.<span class='ident'>read_u8</span>()) },
-            <span class='ident'>ident</span> <span class='op'>=&gt;</span> {
+            _ <span class='op'>=&gt;</span> {
                 <span class='kw'>return</span> <span class='prelude-val'>Err</span>(<span class='ident'>io</span>::<span class='ident'>Error</span>::<span class='ident'>new</span>(<span class='ident'>io</span>::<span class='ident'>ErrorKind</span>::<span class='ident'>Other</span>,
-                                          <span class='string'>&quot;unexpected message tag&quot;</span>,
-                                          <span class='prelude-val'>Some</span>(<span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;got {}&quot;</span>, <span class='ident'>ident</span>))))
+                                          <span class='string'>&quot;unexpected message tag&quot;</span>))
+                                          
             }
         };
         <span class='kw'>if</span> <span class='ident'>rdr</span>.<span class='ident'>limit</span>() <span class='op'>!=</span> <span class='number'>0</span> {
-            <span class='kw'>return</span> <span class='prelude-val'>Err</span>(<span class='ident'>io</span>::<span class='ident'>Error</span>::<span class='ident'>new</span>(<span class='ident'>io</span>::<span class='ident'>ErrorKind</span>::<span class='ident'>Other</span>, <span class='string'>&quot;didn&#39;t read entire message&quot;</span>, <span class='prelude-val'>None</span>));
+            <span class='kw'>return</span> <span class='prelude-val'>Err</span>(<span class='ident'>io</span>::<span class='ident'>Error</span>::<span class='ident'>new</span>(<span class='ident'>io</span>::<span class='ident'>ErrorKind</span>::<span class='ident'>Other</span>, <span class='string'>&quot;didn&#39;t read entire message&quot;</span>));
         }
         <span class='prelude-val'>Ok</span>(<span class='ident'>ret</span>)
     }
@@ -844,10 +841,9 @@
         <span class='number'>6</span> <span class='op'>=&gt;</span> <span class='ident'>AuthenticationSCMCredential</span>,
         <span class='number'>7</span> <span class='op'>=&gt;</span> <span class='ident'>AuthenticationGSS</span>,
         <span class='number'>9</span> <span class='op'>=&gt;</span> <span class='ident'>AuthenticationSSPI</span>,
-        <span class='ident'>val</span> <span class='op'>=&gt;</span> {
+        _ <span class='op'>=&gt;</span> {
             <span class='kw'>return</span> <span class='prelude-val'>Err</span>(<span class='ident'>io</span>::<span class='ident'>Error</span>::<span class='ident'>new</span>(<span class='ident'>io</span>::<span class='ident'>ErrorKind</span>::<span class='ident'>Other</span>,
-                                      <span class='string'>&quot;unexpected authentication tag&quot;</span>,
-                                      <span class='prelude-val'>Some</span>(<span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;got {}&quot;</span>, <span class='ident'>val</span>))));
+                                      <span class='string'>&quot;unexpected authentication tag&quot;</span>));
         }
     })
 }
