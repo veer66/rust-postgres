@@ -2277,6 +2277,7 @@
 <span id="2235">2235</span>
 <span id="2236">2236</span>
 <span id="2237">2237</span>
+<span id="2238">2238</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! Rust-Postgres is a pure-Rust frontend for the popular PostgreSQL database. It</span>
 <span class='doccomment'>//! exposes a high level interface in the vein of JDBC or Go&#39;s `database/sql`</span>
@@ -2395,7 +2396,7 @@
     <span class='ident'>Unix</span>(<span class='ident'>PathBuf</span>)
 }
 
-<span class='doccomment'>/// Authentication information</span>
+<span class='doccomment'>/// Authentication information.</span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Clone</span>, <span class='ident'>Debug</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>UserInfo</span> {
     <span class='doccomment'>/// The username</span>
@@ -2782,7 +2783,8 @@
         }
 
         <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>raw_prepare</span>(<span class='ident'>TYPEINFO_QUERY</span>,
-                               <span class='string'>&quot;SELECT typname, typelem, NULL::OID FROM pg_catalog.pg_type \
+                               <span class='string'>&quot;SELECT typname, typelem, NULL::OID \
+                                FROM pg_catalog.pg_type \
                                 WHERE oid = $1&quot;</span>) {
             <span class='prelude-val'>Ok</span>(..) <span class='op'>=&gt;</span> <span class='prelude-val'>Ok</span>(()),
             <span class='prelude-val'>Err</span>(<span class='ident'>Error</span>::<span class='ident'>IoError</span>(<span class='ident'>e</span>)) <span class='op'>=&gt;</span> <span class='prelude-val'>Err</span>(<span class='ident'>ConnectError</span>::<span class='ident'>IoError</span>(<span class='ident'>e</span>)),

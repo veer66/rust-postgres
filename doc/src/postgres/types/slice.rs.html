@@ -109,6 +109,7 @@
 <span id="67">67</span>
 <span id="68">68</span>
 <span id="69">69</span>
+<span id="70">70</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>io</span>::<span class='ident'>prelude</span>::<span class='op'>*</span>;
 <span class='kw'>use</span> <span class='ident'>byteorder</span>::{<span class='ident'>WriteBytesExt</span>, <span class='ident'>BigEndian</span>};
@@ -158,8 +159,8 @@
         <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>w</span>.<span class='ident'>write_i32</span>::<span class='op'>&lt;</span><span class='ident'>BigEndian</span><span class='op'>&gt;</span>(<span class='self'>self</span>.<span class='number'>0</span>.<span class='ident'>len</span>() <span class='kw'>as</span> <span class='ident'>i32</span>));
         <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>w</span>.<span class='ident'>write_i32</span>::<span class='op'>&lt;</span><span class='ident'>BigEndian</span><span class='op'>&gt;</span>(<span class='number'>0</span>)); <span class='comment'>// index offset</span>
 
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>inner_buf</span> <span class='op'>=</span> <span class='macro'>vec</span><span class='macro'>!</span>[];
         <span class='kw'>for</span> <span class='ident'>e</span> <span class='kw'>in</span> <span class='self'>self</span>.<span class='number'>0</span> {
-            <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>inner_buf</span> <span class='op'>=</span> <span class='macro'>vec</span><span class='macro'>!</span>[];
             <span class='kw'>match</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>e</span>.<span class='ident'>to_sql</span>(<span class='kw-2'>&amp;</span><span class='ident'>member_type</span>, <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>inner_buf</span>)) {
                 <span class='ident'>IsNull</span>::<span class='ident'>No</span> <span class='op'>=&gt;</span> {
                     <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>w</span>.<span class='ident'>write_i32</span>::<span class='op'>&lt;</span><span class='ident'>BigEndian</span><span class='op'>&gt;</span>(<span class='ident'>inner_buf</span>.<span class='ident'>len</span>() <span class='kw'>as</span> <span class='ident'>i32</span>));
@@ -167,6 +168,7 @@
                 }
                 <span class='ident'>IsNull</span>::<span class='ident'>Yes</span> <span class='op'>=&gt;</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>w</span>.<span class='ident'>write_i32</span>::<span class='op'>&lt;</span><span class='ident'>BigEndian</span><span class='op'>&gt;</span>(<span class='op'>-</span><span class='number'>1</span>)),
             }
+            <span class='ident'>inner_buf</span>.<span class='ident'>clear</span>();
         }
 
         <span class='prelude-val'>Ok</span>(<span class='ident'>IsNull</span>::<span class='ident'>No</span>)

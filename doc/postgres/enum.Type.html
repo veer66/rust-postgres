@@ -43,7 +43,7 @@
     <section id='main' class="content enum">
 <h1 class='fqn'><span class='in-band'>Enum <a href='index.html'>postgres</a>::<wbr><a class='enum' href=''>Type</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-18110' href='../src/postgres/types/mod.rs.html#78-85'>[src]</a></span></h1>
+        </span><a id='src-18110' href='../src/postgres/types/mod.rs.html#79-86'>[src]</a></span></h1>
 <pre class='rust enum'>pub enum Type {
     Bool,
     Bytea,
@@ -366,6 +366,12 @@
 
 <p>If the OID is unknown, <code>None</code> is returned.</p>
 </div><h4 id='method.to_oid' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.to_oid' class='fnname'>to_oid</a>(&amp;self) -&gt; <a class='type' href='../postgres/type.Oid.html' title='postgres::Oid'>Oid</a></code></h4>
+<div class='docblock'><p>Returns the OID of the <code>Type</code>.</p>
+
+<h1 id="deprecated" class='section-header'><a
+                           href="#deprecated">Deprecated</a></h1>
+<p>Use <code>oid</code> instead.</p>
+</div><h4 id='method.oid' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.oid' class='fnname'>oid</a>(&amp;self) -&gt; <a class='type' href='../postgres/type.Oid.html' title='postgres::Oid'>Oid</a></code></h4>
 <div class='docblock'><p>Returns the OID of the <code>Type</code>.</p>
 </div><h4 id='method.kind' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.kind' class='fnname'>kind</a>(&amp;self) -&gt; &amp;<a class='enum' href='../postgres/types/enum.Kind.html' title='postgres::types::Kind'>Kind</a></code></h4>
 <div class='docblock'><p>The kind of this type</p>

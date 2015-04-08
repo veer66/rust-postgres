@@ -315,7 +315,7 @@
     <span class='ident'>constraint</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
     <span class='ident'>file</span>: <span class='ident'>String</span>,
     <span class='ident'>line</span>: <span class='ident'>u32</span>,
-    <span class='ident'>routine</span>: <span class='ident'>String</span>
+    <span class='ident'>routine</span>: <span class='ident'>String</span>,
 }
 
 <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>dberror_new_raw</span>(<span class='ident'>fields</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span>(<span class='ident'>u8</span>, <span class='ident'>String</span>)<span class='op'>&gt;</span>) <span class='op'>-&gt;</span> <span class='ident'>result</span>::<span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>DbError</span>, ()<span class='op'>&gt;</span> {
