@@ -43,7 +43,7 @@
     <section id='main' class="content fn">
 <h1 class='fqn'><span class='in-band'>Function <a href='index.html'>postgres</a>::<wbr><a class='fn' href=''>cancel_query</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-27009' href='../src/postgres/lib.rs.html#387-400'>[src]</a></span></h1>
+        </span><a id='src-27003' href='../src/postgres/lib.rs.html#387-400'>[src]</a></span></h1>
 <pre class='rust fn'>pub fn cancel_query&lt;T&gt;(params: T, ssl: &amp;<a class='enum' href='../postgres/enum.SslMode.html' title='postgres::SslMode'>SslMode</a>, data: <a class='struct' href='../postgres/struct.CancelData.html' title='postgres::CancelData'>CancelData</a>) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>, <a class='enum' href='../postgres/enum.ConnectError.html' title='postgres::ConnectError'>ConnectError</a>&gt; <span class='where'>where T: <a class='trait' href='../postgres/trait.IntoConnectParams.html' title='postgres::IntoConnectParams'>IntoConnectParams</a></span></pre><div class='docblock'><p>Attempts to cancel an in-progress query.</p>
 
 <p>The backend provides no information about whether a cancellation attempt
