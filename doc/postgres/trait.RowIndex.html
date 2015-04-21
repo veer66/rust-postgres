@@ -41,22 +41,22 @@
     </nav>
 
     <section id='main' class="content trait">
-<h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>postgres</a>::<wbr><a class='trait' href=''>RowIndex</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+<h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>postgres</a>::<wbr><a class='trait' href=''>RowIndex</a></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-33854' href='../src/postgres/lib.rs.html#1830-1834'>[src]</a></span></h1>
+        </span><a id='src-32946' class='srclink' href='../src/postgres/lib.rs.html#1830-1834'>[src]</a></span></h1>
 <pre class='rust trait'>pub trait RowIndex {
     fn <a href='#tymethod.idx' class='fnname'>idx</a>(&amp;self, stmt: &amp;<a class='struct' href='../postgres/struct.Statement.html' title='postgres::Statement'>Statement</a>) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>&gt;;
 }</pre><div class='docblock'><p>A trait implemented by types that can index into columns of a row.</p>
 </div>
             <h2 id='required-methods'>Required Methods</h2>
             <div class='methods'>
-        <h3 id='tymethod.idx' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.idx' class='fnname'>idx</a>(&amp;self, stmt: &amp;<a class='struct' href='../postgres/struct.Statement.html' title='postgres::Statement'>Statement</a>) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>&gt;</code></h3><div class='docblock'><p>Returns the index of the appropriate column, or <code>None</code> if no such
+        <h3 id='tymethod.idx' class='method stab '><code>fn <a href='#tymethod.idx' class='fnname'>idx</a>(&amp;self, stmt: &amp;<a class='struct' href='../postgres/struct.Statement.html' title='postgres::Statement'>Statement</a>) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>&gt;</code></h3><div class='docblock'><p>Returns the index of the appropriate column, or <code>None</code> if no such
 column exists.</p>
 </div></div>
         <h2 id='implementors'>Implementors</h2>
         <ul class='item-list' id='implementors-list'>
-    <li><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='../postgres/trait.RowIndex.html' title='postgres::RowIndex'>RowIndex</a> for <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></li>
-<li><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a&gt; <a class='trait' href='../postgres/trait.RowIndex.html' title='postgres::RowIndex'>RowIndex</a> for &amp;'a <a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a></code></li>
+    <li><code>impl <a class='trait' href='../postgres/trait.RowIndex.html' title='postgres::RowIndex'>RowIndex</a> for <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></li>
+<li><code>impl&lt;'a&gt; <a class='trait' href='../postgres/trait.RowIndex.html' title='postgres::RowIndex'>RowIndex</a> for &amp;'a <a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a></code></li>
 </ul><script type="text/javascript" async
                               src="../implementors/postgres/trait.RowIndex.js">
                       </script></section>

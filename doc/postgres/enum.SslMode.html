@@ -41,19 +41,19 @@
     </nav>
 
     <section id='main' class="content enum">
-<h1 class='fqn'><span class='in-band'>Enum <a href='index.html'>postgres</a>::<wbr><a class='enum' href=''>SslMode</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+<h1 class='fqn'><span class='in-band'>Enum <a href='index.html'>postgres</a>::<wbr><a class='enum' href=''>SslMode</a></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-31281' href='../src/postgres/lib.rs.html#1172-1179'>[src]</a></span></h1>
+        </span><a id='src-30373' class='srclink' href='../src/postgres/lib.rs.html#1172-1179'>[src]</a></span></h1>
 <pre class='rust enum'>pub enum SslMode {
     None,
     Prefer(<a class='struct' href='https://sfackler.github.io/rust-openssl/doc/openssl/openssl/ssl/struct.SslContext.html' title='openssl::ssl::SslContext'>SslContext</a>),
     Require(<a class='struct' href='https://sfackler.github.io/rust-openssl/doc/openssl/openssl/ssl/struct.SslContext.html' title='openssl::ssl::SslContext'>SslContext</a>),
 }</pre><div class='docblock'><p>Specifies the SSL support requested for a new connection</p>
 </div><h2 class='variants'>Variants</h2>
-<table><tr><td id='variant.None'><a class='stability Unmarked' title='No stability level'></a><code>None</code></td><td><div class='docblock'><p>The connection will not use SSL</p>
-</div></td></tr><tr><td id='variant.Prefer'><a class='stability Unmarked' title='No stability level'></a><code>Prefer</code></td><td><div class='docblock'><p>The connection will use SSL if the backend supports it</p>
-</div></td></tr><tr><td id='variant.Require'><a class='stability Unmarked' title='No stability level'></a><code>Require</code></td><td><div class='docblock'><p>The connection must use SSL</p>
-</div></td></tr></table><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='enum' href='../postgres/enum.SslMode.html' title='postgres::SslMode'>SslMode</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='http://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+<table><tr><td id='variant.None'><code>None</code></td><td><div class='docblock'><p>The connection will not use SSL</p>
+</div></td></tr><tr><td id='variant.Prefer'><code>Prefer</code></td><td><div class='docblock'><p>The connection will use SSL if the backend supports it</p>
+</div></td></tr><tr><td id='variant.Require'><code>Require</code></td><td><div class='docblock'><p>The connection must use SSL</p>
+</div></td></tr></table><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='enum' href='../postgres/enum.SslMode.html' title='postgres::SslMode'>SslMode</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='http://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
 </div></section>
     <section id='search' class="content hidden"></section>
 
