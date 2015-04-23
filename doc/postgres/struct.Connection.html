@@ -43,7 +43,7 @@
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>postgres</a>::<wbr><a class='struct' href=''>Connection</a></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-29935' class='srclink' href='../src/postgres/lib.rs.html#873-875'>[src]</a></span></h1>
+        </span><a id='src-30285' class='srclink' href='../src/postgres/lib.rs.html#928-930'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct Connection {
     // some fields omitted
 }</pre><div class='docblock'><p>A connection to a Postgres database.</p>
@@ -157,6 +157,14 @@ is active until the <code>Transaction</code> object falls out of scope.</p>
 
 <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>trans</span>.<span class='ident'>commit</span>());
 </pre>
+</div><h4 id='method.set_transaction_isolation' class='method'><code>fn <a href='#method.set_transaction_isolation' class='fnname'>set_transaction_isolation</a>(&amp;self, level: <a class='enum' href='../postgres/enum.IsolationLevel.html' title='postgres::IsolationLevel'>IsolationLevel</a>) -&gt; <a class='type' href='../postgres/type.Result.html' title='postgres::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></h4>
+<div class='docblock'><p>Sets the isolation level which will be used for future transactions.</p>
+
+<h2 id="note" class='section-header'><a
+                           href="#note">Note</a></h2>
+<p>This will not change the behavior of an active transaction.</p>
+</div><h4 id='method.get_transaction_isolation' class='method'><code>fn <a href='#method.get_transaction_isolation' class='fnname'>get_transaction_isolation</a>(&amp;self) -&gt; <a class='type' href='../postgres/type.Result.html' title='postgres::Result'>Result</a>&lt;<a class='enum' href='../postgres/enum.IsolationLevel.html' title='postgres::IsolationLevel'>IsolationLevel</a>&gt;</code></h4>
+<div class='docblock'><p>Returns the isolation level which will be used for future transactions.</p>
 </div><h4 id='method.execute' class='method'><code>fn <a href='#method.execute' class='fnname'>execute</a>(&amp;self, query: &amp;<a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>, params: <a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;[</a>&amp;<a class='trait' href='../postgres/trait.ToSql.html' title='postgres::ToSql'>ToSql</a><a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>) -&gt; <a class='type' href='../postgres/type.Result.html' title='postgres::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.u64.html'>u64</a>&gt;</code></h4>
 <div class='docblock'><p>A convenience function for queries that are only run once.</p>
 
