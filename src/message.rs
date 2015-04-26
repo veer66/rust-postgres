@@ -11,6 +11,7 @@ use self::FrontendMessage::*;
 
 pub const PROTOCOL_VERSION: u32 = 0x0003_0000;
 pub const CANCEL_CODE: u32 = 80877102;
+#[allow(dead_code)] // only used with openssl feature
 pub const SSL_CODE: u32 = 80877103;
 
 pub enum BackendMessage {
@@ -122,6 +123,7 @@ pub enum FrontendMessage<'a> {
     Query {
         query: &'a str
     },
+    #[allow(dead_code)] // only used with openssl feature
     SslRequest {
         code: u32
     },

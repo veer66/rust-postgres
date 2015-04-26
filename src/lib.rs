@@ -48,17 +48,20 @@
 extern crate byteorder;
 #[macro_use]
 extern crate log;
+#[cfg(feature = "openssl")]
 extern crate openssl;
 extern crate phf;
 extern crate rustc_serialize as serialize;
 #[cfg(feature = "unix_socket")]
 extern crate unix_socket;
 extern crate debug_builders;
+extern crate crypto;
 
 use debug_builders::DebugStruct;
-use openssl::crypto::hash::{self, Hasher};
-use openssl::ssl::{SslContext, MaybeSslStream};
-use serialize::hex::ToHex;
+use crypto::digest::Digest;
+use crypto::md5::Md5;
+#[cfg(feature = "openssl")]
+use openssl::ssl::SslContext;
 use std::ascii::AsciiExt;
 use std::borrow::{ToOwned, Cow};
 use std::cell::{Cell, RefCell};
@@ -462,7 +465,7 @@ struct CachedStatement {
 }
 
 struct InnerConnection {
-    stream: BufStream<MaybeSslStream<InternalStream>>,
+    stream: BufStream<InternalStream>,
     notice_handler: Box<HandleNotice>,
     notifications: VecDeque<Notification>,
     cancel_data: CancelData,
@@ -626,13 +629,14 @@ impl InnerConnection {
             }
             AuthenticationMD5Password { salt } => {
                 let pass = try!(user.password.ok_or(ConnectError::MissingPassword));
-                let mut hasher = Hasher::new(hash::Type::MD5);
-                let _ = hasher.write_all(pass.as_bytes());
-                let _ = hasher.write_all(user.user.as_bytes());
-                let output = hasher.finish().to_hex();
-                let _ = hasher.write_all(output.as_bytes());
-                let _ = hasher.write_all(&salt);
-                let output = format!("md5{}", hasher.finish().to_hex());
+                let mut hasher = Md5::new();
+                let _ = hasher.input(pass.as_bytes());
+                let _ = hasher.input(user.user.as_bytes());
+                let output = hasher.result_str();
+                hasher.reset();
+                let _ = hasher.input(output.as_bytes());
+                let _ = hasher.input(&salt);
+                let output = format!("md5{}", hasher.result_str());
                 try!(self.write_messages(&[PasswordMessage {
                         password: &output
                     }]));
@@ -1245,8 +1249,14 @@ pub enum SslMode {
     /// The connection will not use SSL
     None,
     /// The connection will use SSL if the backend supports it
+    ///
+    /// Requires the `openssl` feature.
+    #[cfg(feature = "openssl")]
     Prefer(SslContext),
     /// The connection must use SSL
+    ///
+    /// Requires the `openssl` feature.
+    #[cfg(feature = "openssl")]
     Require(SslContext)
 }
 

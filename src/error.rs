@@ -1,6 +1,7 @@
 pub use ugh_privacy::DbError;
 
 use byteorder;
+#[cfg(feature = "openssl")]
 use openssl::ssl::error::SslError;
 use phf;
 use std::error;
@@ -16,24 +17,27 @@ include!(concat!(env!("OUT_DIR"), "/sqlstate.rs"));
 /// Reasons a new Postgres connection could fail
 #[derive(Debug)]
 pub enum ConnectError {
-    /// The provided URL could not be parsed
+    /// The provided URL could not be parsed.
     InvalidUrl(String),
-    /// The URL was missing a user
+    /// The URL was missing a user.
     MissingUser,
-    /// An error from the Postgres server itself
+    /// An error from the Postgres server itself.
     DbError(DbError),
-    /// A password was required but not provided in the URL
+    /// A password was required but not provided in the URL.
     MissingPassword,
     /// The Postgres server requested an authentication method not supported
-    /// by the driver
+    /// by the driver.
     UnsupportedAuthentication,
-    /// The Postgres server does not support SSL encryption
+    /// The Postgres server does not support SSL encryption.
     NoSslSupport,
-    /// There was an error initializing the SSL session
+    /// There was an error initializing the SSL session.
+    ///
+    /// Requires the `openssl` feature.
+    #[cfg(feature = "openssl")]
     SslError(SslError),
-    /// There was an error communicating with the server
+    /// There was an error communicating with the server.
     IoError(io::Error),
-    /// The server sent an unexpected response
+    /// The server sent an unexpected response.
     BadResponse,
 }
 
@@ -58,6 +62,7 @@ impl error::Error for ConnectError {
                 "The server requested an unsupported authentication method"
             }
             ConnectError::NoSslSupport => "The server does not support SSL",
+            #[cfg(feature = "openssl")]
             ConnectError::SslError(_) => "Error initiating SSL session",
             ConnectError::IoError(_) => "Error communicating with server",
             ConnectError::BadResponse => "The server returned an unexpected response",
@@ -67,6 +72,7 @@ impl error::Error for ConnectError {
     fn cause(&self) -> Option<&error::Error> {
         match *self {
             ConnectError::DbError(ref err) => Some(err),
+            #[cfg(feature = "openssl")]
             ConnectError::SslError(ref err) => Some(err),
             ConnectError::IoError(ref err) => Some(err),
             _ => None
@@ -86,6 +92,7 @@ impl From<DbError> for ConnectError {
     }
 }
 
+#[cfg(feature = "openssl")]
 impl From<SslError> for ConnectError {
     fn from(err: SslError) -> ConnectError {
         ConnectError::SslError(err)
