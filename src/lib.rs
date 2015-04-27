@@ -57,7 +57,6 @@ extern crate debug_builders;
 
 use debug_builders::DebugStruct;
 use openssl::crypto::hash::{self, Hasher};
-use openssl::ssl::{SslContext, MaybeSslStream};
 use serialize::hex::ToHex;
 use std::ascii::AsciiExt;
 use std::borrow::{ToOwned, Cow};
@@ -78,6 +77,7 @@ use std::path::PathBuf;
 pub use error::{Error, ConnectError, SqlState, DbError, ErrorPosition};
 #[doc(inline)]
 pub use types::{Oid, Type, Kind, ToSql, FromSql};
+pub use io_util::{SslMode, NegotiateSsl, StreamWrapper, NoSsl};
 use types::IsNull;
 #[doc(inline)]
 pub use types::Slice;
@@ -385,8 +385,9 @@ pub struct CancelData {
 /// # let _ =
 /// postgres::cancel_query(url, &SslMode::None, cancel_data);
 /// ```
-pub fn cancel_query<T>(params: T, ssl: &SslMode, data: CancelData)
-                       -> result::Result<(), ConnectError> where T: IntoConnectParams {
+pub fn cancel_query<T, N>(params: T, ssl: &mut SslMode<N>, data: CancelData)
+                          -> result::Result<(), ConnectError>
+        where T: IntoConnectParams, N: NegotiateSsl {
     let params = try!(params.into_connect_params());
     let mut socket = try!(io_util::initialize_stream(&params, ssl));
 
@@ -462,7 +463,7 @@ struct CachedStatement {
 }
 
 struct InnerConnection {
-    stream: BufStream<MaybeSslStream<InternalStream>>,
+    stream: BufStream<Box<StreamWrapper<InternalStream>>>,
     notice_handler: Box<HandleNotice>,
     notifications: VecDeque<Notification>,
     cancel_data: CancelData,
@@ -484,8 +485,9 @@ impl Drop for InnerConnection {
 }
 
 impl InnerConnection {
-    fn connect<T>(params: T, ssl: &SslMode) -> result::Result<InnerConnection, ConnectError>
-            where T: IntoConnectParams {
+    fn connect<T, N>(params: T, ssl: &mut SslMode<N>)
+                     -> result::Result<InnerConnection, ConnectError>
+            where T: IntoConnectParams, N: NegotiateSsl {
         let params = try!(params.into_connect_params());
         let stream = try!(io_util::initialize_stream(&params, ssl));
 
@@ -1000,8 +1002,9 @@ impl Connection {
     /// let conn = try!(Connection::connect(params, &SslMode::None));
     /// # Ok(()) };
     /// ```
-    pub fn connect<T>(params: T, ssl: &SslMode) -> result::Result<Connection, ConnectError>
-            where T: IntoConnectParams {
+    pub fn connect<T, N>(params: T, ssl: &mut SslMode<N>)
+                         -> result::Result<Connection, ConnectError>
+            where T: IntoConnectParams, N: NegotiateSsl {
         InnerConnection::connect(params, ssl).map(|conn| {
             Connection { conn: RefCell::new(conn) }
         })
@@ -1237,17 +1240,6 @@ impl Connection {
         conn.finished = true;
         conn.finish_inner()
     }
-}
-
-/// Specifies the SSL support requested for a new connection
-#[derive(Debug)]
-pub enum SslMode {
-    /// The connection will not use SSL
-    None,
-    /// The connection will use SSL if the backend supports it
-    Prefer(SslContext),
-    /// The connection must use SSL
-    Require(SslContext)
 }
 
 /// Represents a transaction on a database connection.
