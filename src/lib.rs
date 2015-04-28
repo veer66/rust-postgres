@@ -64,7 +64,8 @@ use std::cell::{Cell, RefCell};
 use std::collections::{VecDeque, HashMap};
 use std::fmt;
 use std::iter::IntoIterator;
-use std::io::{self, BufStream};
+use std::io as std_io;
+use std::io::BufStream;
 use std::io::prelude::*;
 use std::mem;
 use std::slice;
@@ -77,7 +78,7 @@ use std::path::PathBuf;
 pub use error::{Error, ConnectError, SqlState, DbError, ErrorPosition};
 #[doc(inline)]
 pub use types::{Oid, Type, Kind, ToSql, FromSql};
-pub use io_util::{SslMode, NegotiateSsl, StreamWrapper, NoSsl, Stream};
+use io::{NoSsl, StreamWrapper, NegotiateSsl};
 use types::IsNull;
 #[doc(inline)]
 pub use types::Slice;
@@ -91,9 +92,10 @@ use url::Url;
 mod macros;
 
 mod error;
-mod io_util;
+pub mod io;
 mod message;
 mod ugh_privacy;
+mod priv_io;
 mod url;
 mod util;
 pub mod types;
@@ -388,7 +390,7 @@ pub fn cancel_query<T, N>(params: T, ssl: &mut SslMode<N>, data: CancelData)
                           -> result::Result<(), ConnectError>
         where T: IntoConnectParams, N: NegotiateSsl {
     let params = try!(params.into_connect_params());
-    let mut socket = try!(io_util::initialize_stream(&params, ssl));
+    let mut socket = try!(priv_io::initialize_stream(&params, ssl));
 
     try!(socket.write_message(&CancelRequest {
         code: message::CANCEL_CODE,
@@ -454,6 +456,16 @@ impl IsolationLevel {
     }
 }
 
+/// Specifies the SSL support requested for a new connection.
+pub enum SslMode<N = NoSsl> {
+    /// The connection will not use SSL.
+    None,
+    /// The connection will use SSL if the backend supports it.
+    Prefer(N),
+    /// The connection must use SSL.
+    Require(N),
+}
+
 #[derive(Clone)]
 struct CachedStatement {
     name: String,
@@ -488,7 +500,7 @@ impl InnerConnection {
                      -> result::Result<InnerConnection, ConnectError>
             where T: IntoConnectParams, N: NegotiateSsl {
         let params = try!(params.into_connect_params());
-        let stream = try!(io_util::initialize_stream(&params, ssl));
+        let stream = try!(priv_io::initialize_stream(&params, ssl));
 
         let ConnectParams { user, database, mut options, .. } = params;
 
@@ -568,7 +580,7 @@ impl InnerConnection {
         }
     }
 
-    fn write_messages(&mut self, messages: &[FrontendMessage]) -> io::Result<()> {
+    fn write_messages(&mut self, messages: &[FrontendMessage]) -> std_io::Result<()> {
         debug_assert!(!self.desynchronized);
         for message in messages {
             try_desync!(self, self.stream.write_message(message));
@@ -576,7 +588,7 @@ impl InnerConnection {
         Ok(try_desync!(self, self.stream.flush()))
     }
 
-    fn read_one_message(&mut self) -> io::Result<Option<BackendMessage>> {
+    fn read_one_message(&mut self) -> std_io::Result<Option<BackendMessage>> {
         debug_assert!(!self.desynchronized);
         match try_desync!(self, self.stream.read_message()) {
             NoticeResponse { fields } => {
@@ -593,7 +605,7 @@ impl InnerConnection {
         }
     }
 
-    fn read_message_with_notification(&mut self) -> io::Result<BackendMessage> {
+    fn read_message_with_notification(&mut self) -> std_io::Result<BackendMessage> {
         loop {
             if let Some(msg) = try!(self.read_one_message()) {
                 return Ok(msg);
@@ -601,7 +613,7 @@ impl InnerConnection {
         }
     }
 
-    fn read_message(&mut self) -> io::Result<BackendMessage> {
+    fn read_message(&mut self) -> std_io::Result<BackendMessage> {
         loop {
             match try!(self.read_message_with_notification()) {
                 NotificationResponse { pid, channel, payload } => {
