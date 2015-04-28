@@ -2350,6 +2350,13 @@
 <span id="2308">2308</span>
 <span id="2309">2309</span>
 <span id="2310">2310</span>
+<span id="2311">2311</span>
+<span id="2312">2312</span>
+<span id="2313">2313</span>
+<span id="2314">2314</span>
+<span id="2315">2315</span>
+<span id="2316">2316</span>
+<span id="2317">2317</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! Rust-Postgres is a pure-Rust frontend for the popular PostgreSQL database. It</span>
 <span class='doccomment'>//! exposes a high level interface in the vein of JDBC or Go&#39;s `database/sql`</span>
@@ -3479,8 +3486,15 @@
         <span class='self'>self</span>.<span class='ident'>batch_execute</span>(<span class='ident'>level</span>.<span class='ident'>to_set_query</span>())
     }
 
-    <span class='doccomment'>/// Returns the isolation level which will be used for future transactions.</span>
+    <span class='doccomment'>/// # Deprecated</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// Use `transaction_isolation` instead.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>get_transaction_isolation</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>IsolationLevel</span><span class='op'>&gt;</span> {
+        <span class='self'>self</span>.<span class='ident'>transaction_isolation</span>()
+    }
+
+    <span class='doccomment'>/// Returns the isolation level which will be used for future transactions.</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>transaction_isolation</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>IsolationLevel</span><span class='op'>&gt;</span> {
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>conn</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>conn</span>.<span class='ident'>borrow_mut</span>();
         <span class='macro'>check_desync</span><span class='macro'>!</span>(<span class='ident'>conn</span>);
         <span class='kw'>let</span> <span class='ident'>result</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>conn</span>.<span class='ident'>quick_query</span>(<span class='string'>&quot;SHOW TRANSACTION ISOLATION LEVEL&quot;</span>));
