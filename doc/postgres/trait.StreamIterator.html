@@ -41,20 +41,20 @@
     </nav>
 
     <section id='main' class="content trait">
-<h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>postgres</a>::<wbr><a class='trait' href=''>StreamIterator</a><wbr></span><span class='out-of-band'><span id='render-detail'>
-            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-33839' href='../src/postgres/lib.rs.html#2051-2054'>[src]</a></span></h1>
+<h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>postgres</a>::<wbr><a class='trait' href=''>StreamIterator</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="#" title="collapse all docs">[-]</a>
+        </span><a id='src-33839' class='srclink' href='../src/postgres/lib.rs.html#2051-2054' title='goto source code'>[src]</a></span></h1>
 <pre class='rust trait'>pub trait StreamIterator {
     fn <a href='#tymethod.next' class='fnname'>next</a>&lt;'a&gt;(&amp;'a mut self) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;'a <a class='trait' href='../postgres/trait.ToSql.html' title='postgres::ToSql'>ToSql</a> + 'a&gt;;
 }</pre><div class='docblock'><p>An <code>Iterator</code> variant which returns borrowed values.</p>
 </div>
             <h2 id='required-methods'>Required Methods</h2>
             <div class='methods'>
-        <h3 id='tymethod.next' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.next' class='fnname'>next</a>&lt;'a&gt;(&amp;'a mut self) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;'a <a class='trait' href='../postgres/trait.ToSql.html' title='postgres::ToSql'>ToSql</a> + 'a&gt;</code></h3><div class='docblock'><p>Returns the next value, or <code>None</code> if there is none.</p>
+        <h3 id='tymethod.next' class='method stab '><code>fn <a href='#tymethod.next' class='fnname'>next</a>&lt;'a&gt;(&amp;'a mut self) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;'a <a class='trait' href='../postgres/trait.ToSql.html' title='postgres::ToSql'>ToSql</a> + 'a&gt;</code></h3><div class='docblock'><p>Returns the next value, or <code>None</code> if there is none.</p>
 </div></div>
         <h2 id='implementors'>Implementors</h2>
         <ul class='item-list' id='implementors-list'>
-    <li><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a&gt; <a class='trait' href='../postgres/trait.StreamIterator.html' title='postgres::StreamIterator'>StreamIterator</a> for <a class='struct' href='../postgres/struct.VecStreamIterator.html' title='postgres::VecStreamIterator'>VecStreamIterator</a>&lt;'a&gt;</code></li>
+    <li><code>impl&lt;'a&gt; <a class='trait' href='../postgres/trait.StreamIterator.html' title='postgres::StreamIterator'>StreamIterator</a> for <a class='struct' href='../postgres/struct.VecStreamIterator.html' title='postgres::VecStreamIterator'>VecStreamIterator</a>&lt;'a&gt;</code></li>
 </ul><script type="text/javascript" async
                               src="../implementors/postgres/trait.StreamIterator.js">
                       </script></section>
