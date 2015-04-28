@@ -41,9 +41,9 @@
     </nav>
 
     <section id='main' class="content enum">
-<h1 class='fqn'><span class='in-band'>Enum <a href='index.html'>postgres</a>::<wbr><a class='enum' href=''>Type</a></span><span class='out-of-band'><span id='render-detail'>
-            <a id="toggle-all-docs" href="#" title="collapse all docs">[-]</a>
-        </span><a id='src-15645' class='srclink' href='../src/postgres/types/mod.rs.html#81-88' title='goto source code'>[src]</a></span></h1>
+<h1 class='fqn'><span class='in-band'>Enum <a href='index.html'>postgres</a>::<wbr><a class='enum' href=''>Type</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-15645' href='../src/postgres/types/mod.rs.html#81-88'>[src]</a></span></h1>
 <pre class='rust enum'>pub enum Type {
     Bool,
     Bytea,
@@ -204,182 +204,182 @@
     Other(<a class='struct' href='http://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='struct' href='../postgres/types/struct.Other.html' title='postgres::types::Other'>Other</a>&gt;),
 }</pre><div class='docblock'><p>A Postgres type</p>
 </div><h2 class='variants'>Variants</h2>
-<table><tr><td id='variant.Bool'><code>Bool</code></td><td><div class='docblock'><p>BOOL - boolean, &#39;true&#39;/&#39;false&#39;</p>
-</div></td></tr><tr><td id='variant.Bytea'><code>Bytea</code></td><td><div class='docblock'><p>BYTEA - variable-length string, binary values escaped</p>
-</div></td></tr><tr><td id='variant.Char'><code>Char</code></td><td><div class='docblock'><p>&quot;char&quot; - single character</p>
-</div></td></tr><tr><td id='variant.Name'><code>Name</code></td><td><div class='docblock'><p>NAME - 63-byte type for storing system identifiers</p>
-</div></td></tr><tr><td id='variant.Int8'><code>Int8</code></td><td><div class='docblock'><p>INT8/BIGINT - ~18 digit integer, 8-byte storage</p>
-</div></td></tr><tr><td id='variant.Int2'><code>Int2</code></td><td><div class='docblock'><p>INT2/SMALLINT - -32 thousand to 32 thousand, 2-byte storage</p>
-</div></td></tr><tr><td id='variant.Int2Vector'><code>Int2Vector</code></td><td><div class='docblock'><p>INT2VECTOR - array of int2, used in system tables</p>
-</div></td></tr><tr><td id='variant.Int4'><code>Int4</code></td><td><div class='docblock'><p>INT4/INT - -2 billion to 2 billion integer, 4-byte storage</p>
-</div></td></tr><tr><td id='variant.Regproc'><code>Regproc</code></td><td><div class='docblock'><p>REGPROC - registered procedure</p>
-</div></td></tr><tr><td id='variant.Text'><code>Text</code></td><td><div class='docblock'><p>TEXT - variable-length string, no limit specified</p>
-</div></td></tr><tr><td id='variant.Oid'><code>Oid</code></td><td><div class='docblock'><p>OID - object identifier(oid), maximum 4 billion</p>
-</div></td></tr><tr><td id='variant.Tid'><code>Tid</code></td><td><div class='docblock'><p>TID - (block, offset), physical location of tuple</p>
-</div></td></tr><tr><td id='variant.Xid'><code>Xid</code></td><td><div class='docblock'><p>XID - transaction id</p>
-</div></td></tr><tr><td id='variant.Cid'><code>Cid</code></td><td><div class='docblock'><p>CID - command identifier type, sequence in transaction id</p>
-</div></td></tr><tr><td id='variant.OidVector'><code>OidVector</code></td><td><div class='docblock'><p>OIDVECTOR - array of oids, used in system tables</p>
-</div></td></tr><tr><td id='variant.PgType'><code>PgType</code></td><td><div class='docblock'><p>PG_TYPE</p>
-</div></td></tr><tr><td id='variant.PgAttribute'><code>PgAttribute</code></td><td><div class='docblock'><p>PG_ATTRIBUTE</p>
-</div></td></tr><tr><td id='variant.PgProc'><code>PgProc</code></td><td><div class='docblock'><p>PG_PROC</p>
-</div></td></tr><tr><td id='variant.PgClass'><code>PgClass</code></td><td><div class='docblock'><p>PG_CLASS</p>
-</div></td></tr><tr><td id='variant.Json'><code>Json</code></td><td><div class='docblock'><p>JSON</p>
-</div></td></tr><tr><td id='variant.Xml'><code>Xml</code></td><td><div class='docblock'><p>XML - XML content</p>
-</div></td></tr><tr><td id='variant.XmlArray'><code>XmlArray</code></td><td><div class='docblock'><p>XML[]</p>
-</div></td></tr><tr><td id='variant.PgNodeTree'><code>PgNodeTree</code></td><td><div class='docblock'><p>PG_NODE_TREE - string representing an internal node tree</p>
-</div></td></tr><tr><td id='variant.JsonArray'><code>JsonArray</code></td><td><div class='docblock'><p>JSON[]</p>
-</div></td></tr><tr><td id='variant.Smgr'><code>Smgr</code></td><td><div class='docblock'><p>SMGR - storage manager</p>
-</div></td></tr><tr><td id='variant.Point'><code>Point</code></td><td><div class='docblock'><p>POINT - geometric point &#39;(x, y)&#39;</p>
-</div></td></tr><tr><td id='variant.Lseg'><code>Lseg</code></td><td><div class='docblock'><p>LSEG - geometric line segment &#39;(pt1,pt2)&#39;</p>
-</div></td></tr><tr><td id='variant.Path'><code>Path</code></td><td><div class='docblock'><p>PATH - geometric path &#39;(pt1,...)&#39;</p>
-</div></td></tr><tr><td id='variant.Box'><code>Box</code></td><td><div class='docblock'><p>BOX - geometric box &#39;(lower left,upper right)&#39;</p>
-</div></td></tr><tr><td id='variant.Polygon'><code>Polygon</code></td><td><div class='docblock'><p>POLYGON - geometric polygon &#39;(pt1,...)&#39;</p>
-</div></td></tr><tr><td id='variant.Line'><code>Line</code></td><td><div class='docblock'><p>LINE - geometric line</p>
-</div></td></tr><tr><td id='variant.LineArray'><code>LineArray</code></td><td><div class='docblock'><p>LINE[]</p>
-</div></td></tr><tr><td id='variant.Cidr'><code>Cidr</code></td><td><div class='docblock'><p>CIDR - network IP address/netmask, network address</p>
-</div></td></tr><tr><td id='variant.CidrArray'><code>CidrArray</code></td><td><div class='docblock'><p>CIDR[]</p>
-</div></td></tr><tr><td id='variant.Float4'><code>Float4</code></td><td><div class='docblock'><p>FLOAT4/REAL - single-precision floating point number, 4-byte storage</p>
-</div></td></tr><tr><td id='variant.Float8'><code>Float8</code></td><td><div class='docblock'><p>FLOAT8/DOUBLE PRECISION - double-precision floating point number, 8-byte storage</p>
-</div></td></tr><tr><td id='variant.Abstime'><code>Abstime</code></td><td><div class='docblock'><p>ABSTIME - absolute, limited-range date and time (Unix system time)</p>
-</div></td></tr><tr><td id='variant.Reltime'><code>Reltime</code></td><td><div class='docblock'><p>RELTIME - relative, limited-range date and time (Unix delta time)</p>
-</div></td></tr><tr><td id='variant.Tinterval'><code>Tinterval</code></td><td><div class='docblock'><p>TINTERVAL - (abstime,abstime), time interval</p>
-</div></td></tr><tr><td id='variant.Unknown'><code>Unknown</code></td><td><div class='docblock'><p>UNKNOWN</p>
-</div></td></tr><tr><td id='variant.Circle'><code>Circle</code></td><td><div class='docblock'><p>CIRCLE - geometric circle &#39;(center,radius)&#39;</p>
-</div></td></tr><tr><td id='variant.CircleArray'><code>CircleArray</code></td><td><div class='docblock'><p>CIRCLE[]</p>
-</div></td></tr><tr><td id='variant.Money'><code>Money</code></td><td><div class='docblock'><p>MONEY - monetary amounts, $d,ddd.cc</p>
-</div></td></tr><tr><td id='variant.MoneyArray'><code>MoneyArray</code></td><td><div class='docblock'><p>MONEY[]</p>
-</div></td></tr><tr><td id='variant.Macaddr'><code>Macaddr</code></td><td><div class='docblock'><p>MACADDR - XX:XX:XX:XX:XX:XX, MAC address</p>
-</div></td></tr><tr><td id='variant.Inet'><code>Inet</code></td><td><div class='docblock'><p>INET - IP address/netmask, host address, netmask optional</p>
-</div></td></tr><tr><td id='variant.BoolArray'><code>BoolArray</code></td><td><div class='docblock'><p>BOOL[]</p>
-</div></td></tr><tr><td id='variant.ByteaArray'><code>ByteaArray</code></td><td><div class='docblock'><p>BYTEA[]</p>
-</div></td></tr><tr><td id='variant.CharArray'><code>CharArray</code></td><td><div class='docblock'><p>&quot;char&quot;[]</p>
-</div></td></tr><tr><td id='variant.NameArray'><code>NameArray</code></td><td><div class='docblock'><p>NAME[]</p>
-</div></td></tr><tr><td id='variant.Int2Array'><code>Int2Array</code></td><td><div class='docblock'><p>INT2[]</p>
-</div></td></tr><tr><td id='variant.Int2VectorArray'><code>Int2VectorArray</code></td><td><div class='docblock'><p>INT2VECTOR[]</p>
-</div></td></tr><tr><td id='variant.Int4Array'><code>Int4Array</code></td><td><div class='docblock'><p>INT4[]</p>
-</div></td></tr><tr><td id='variant.RegprocArray'><code>RegprocArray</code></td><td><div class='docblock'><p>REGPROC[]</p>
-</div></td></tr><tr><td id='variant.TextArray'><code>TextArray</code></td><td><div class='docblock'><p>TEXT[]</p>
-</div></td></tr><tr><td id='variant.TidArray'><code>TidArray</code></td><td><div class='docblock'><p>TID[]</p>
-</div></td></tr><tr><td id='variant.XidArray'><code>XidArray</code></td><td><div class='docblock'><p>XID[]</p>
-</div></td></tr><tr><td id='variant.CidArray'><code>CidArray</code></td><td><div class='docblock'><p>CID[]</p>
-</div></td></tr><tr><td id='variant.OidVectorArray'><code>OidVectorArray</code></td><td><div class='docblock'><p>OIDVECTOR[]</p>
-</div></td></tr><tr><td id='variant.BpcharArray'><code>BpcharArray</code></td><td><div class='docblock'><p>BPCHAR[]</p>
-</div></td></tr><tr><td id='variant.VarcharArray'><code>VarcharArray</code></td><td><div class='docblock'><p>VARCHAR[]</p>
-</div></td></tr><tr><td id='variant.Int8Array'><code>Int8Array</code></td><td><div class='docblock'><p>INT8[]</p>
-</div></td></tr><tr><td id='variant.PointArray'><code>PointArray</code></td><td><div class='docblock'><p>POINT[]</p>
-</div></td></tr><tr><td id='variant.LsegArray'><code>LsegArray</code></td><td><div class='docblock'><p>LSEG[]</p>
-</div></td></tr><tr><td id='variant.PathArray'><code>PathArray</code></td><td><div class='docblock'><p>PATH[]</p>
-</div></td></tr><tr><td id='variant.BoxArray'><code>BoxArray</code></td><td><div class='docblock'><p>BOX[]</p>
-</div></td></tr><tr><td id='variant.Float4Array'><code>Float4Array</code></td><td><div class='docblock'><p>FLOAT4[]</p>
-</div></td></tr><tr><td id='variant.Float8Array'><code>Float8Array</code></td><td><div class='docblock'><p>FLOAT8[]</p>
-</div></td></tr><tr><td id='variant.AbstimeArray'><code>AbstimeArray</code></td><td><div class='docblock'><p>ABSTIME[]</p>
-</div></td></tr><tr><td id='variant.ReltimeArray'><code>ReltimeArray</code></td><td><div class='docblock'><p>RELTIME[]</p>
-</div></td></tr><tr><td id='variant.TintervalArray'><code>TintervalArray</code></td><td><div class='docblock'><p>TINTERVAL[]</p>
-</div></td></tr><tr><td id='variant.PolygonArray'><code>PolygonArray</code></td><td><div class='docblock'><p>POLYGON[]</p>
-</div></td></tr><tr><td id='variant.OidArray'><code>OidArray</code></td><td><div class='docblock'><p>OID[]</p>
-</div></td></tr><tr><td id='variant.Aclitem'><code>Aclitem</code></td><td><div class='docblock'><p>ACLITEM - access control list</p>
-</div></td></tr><tr><td id='variant.AclitemArray'><code>AclitemArray</code></td><td><div class='docblock'><p>ACLITEM[]</p>
-</div></td></tr><tr><td id='variant.MacaddrArray'><code>MacaddrArray</code></td><td><div class='docblock'><p>MACADDR[]</p>
-</div></td></tr><tr><td id='variant.InetArray'><code>InetArray</code></td><td><div class='docblock'><p>INET[]</p>
-</div></td></tr><tr><td id='variant.Bpchar'><code>Bpchar</code></td><td><div class='docblock'><p>BPCHAR - char(length), blank-padded string, fixed storage length</p>
-</div></td></tr><tr><td id='variant.Varchar'><code>Varchar</code></td><td><div class='docblock'><p>VARCHAR - varchar(length), non-blank-padded string, variable storage length</p>
-</div></td></tr><tr><td id='variant.Date'><code>Date</code></td><td><div class='docblock'><p>DATE - date</p>
-</div></td></tr><tr><td id='variant.Time'><code>Time</code></td><td><div class='docblock'><p>TIME - time of day</p>
-</div></td></tr><tr><td id='variant.Timestamp'><code>Timestamp</code></td><td><div class='docblock'><p>TIMESTAMP - date and time</p>
-</div></td></tr><tr><td id='variant.TimestampArray'><code>TimestampArray</code></td><td><div class='docblock'><p>TIMESTAMP[]</p>
-</div></td></tr><tr><td id='variant.DateArray'><code>DateArray</code></td><td><div class='docblock'><p>DATE[]</p>
-</div></td></tr><tr><td id='variant.TimeArray'><code>TimeArray</code></td><td><div class='docblock'><p>TIME[]</p>
-</div></td></tr><tr><td id='variant.TimestampTZ'><code>TimestampTZ</code></td><td><div class='docblock'><p>TIMESTAMPTZ - date and time with time zone</p>
-</div></td></tr><tr><td id='variant.TimestampTZArray'><code>TimestampTZArray</code></td><td><div class='docblock'><p>TIMESTAMPTZ[]</p>
-</div></td></tr><tr><td id='variant.Interval'><code>Interval</code></td><td><div class='docblock'><p>INTERVAL - @ &lt;number&gt; &lt;units&gt;, time interval</p>
-</div></td></tr><tr><td id='variant.IntervalArray'><code>IntervalArray</code></td><td><div class='docblock'><p>INTERVAL[]</p>
-</div></td></tr><tr><td id='variant.NumericArray'><code>NumericArray</code></td><td><div class='docblock'><p>NUMERIC[]</p>
-</div></td></tr><tr><td id='variant.CstringArray'><code>CstringArray</code></td><td><div class='docblock'><p>CSTRING[]</p>
-</div></td></tr><tr><td id='variant.Timetz'><code>Timetz</code></td><td><div class='docblock'><p>TIMETZ - time of day with time zone</p>
-</div></td></tr><tr><td id='variant.TimetzArray'><code>TimetzArray</code></td><td><div class='docblock'><p>TIMETZ[]</p>
-</div></td></tr><tr><td id='variant.Bit'><code>Bit</code></td><td><div class='docblock'><p>BIT - fixed-length bit string</p>
-</div></td></tr><tr><td id='variant.BitArray'><code>BitArray</code></td><td><div class='docblock'><p>BIT[]</p>
-</div></td></tr><tr><td id='variant.Varbit'><code>Varbit</code></td><td><div class='docblock'><p>VARBIT - variable-length bit string</p>
-</div></td></tr><tr><td id='variant.VarbitArray'><code>VarbitArray</code></td><td><div class='docblock'><p>VARBIT[]</p>
-</div></td></tr><tr><td id='variant.Numeric'><code>Numeric</code></td><td><div class='docblock'><p>NUMERIC - numeric(precision, decimal), arbitrary precision number</p>
-</div></td></tr><tr><td id='variant.Refcursor'><code>Refcursor</code></td><td><div class='docblock'><p>REFCURSOR - reference to cursor (portal name)</p>
-</div></td></tr><tr><td id='variant.RefcursorArray'><code>RefcursorArray</code></td><td><div class='docblock'><p>REFCURSOR[]</p>
-</div></td></tr><tr><td id='variant.Regprocedure'><code>Regprocedure</code></td><td><div class='docblock'><p>REGPROCEDURE - registered procedure (with args)</p>
-</div></td></tr><tr><td id='variant.Regoper'><code>Regoper</code></td><td><div class='docblock'><p>REGOPER - registered operator</p>
-</div></td></tr><tr><td id='variant.Regoperator'><code>Regoperator</code></td><td><div class='docblock'><p>REGOPERATOR - registered operator (with args)</p>
-</div></td></tr><tr><td id='variant.Regclass'><code>Regclass</code></td><td><div class='docblock'><p>REGCLASS - registered class</p>
-</div></td></tr><tr><td id='variant.Regtype'><code>Regtype</code></td><td><div class='docblock'><p>REGTYPE - registered type</p>
-</div></td></tr><tr><td id='variant.RegprocedureArray'><code>RegprocedureArray</code></td><td><div class='docblock'><p>REGPROCEDURE[]</p>
-</div></td></tr><tr><td id='variant.RegoperArray'><code>RegoperArray</code></td><td><div class='docblock'><p>REGOPER[]</p>
-</div></td></tr><tr><td id='variant.RegoperatorArray'><code>RegoperatorArray</code></td><td><div class='docblock'><p>REGOPERATOR[]</p>
-</div></td></tr><tr><td id='variant.RegclassArray'><code>RegclassArray</code></td><td><div class='docblock'><p>REGCLASS[]</p>
-</div></td></tr><tr><td id='variant.RegtypeArray'><code>RegtypeArray</code></td><td><div class='docblock'><p>REGTYPE[]</p>
-</div></td></tr><tr><td id='variant.Record'><code>Record</code></td><td><div class='docblock'><p>RECORD</p>
-</div></td></tr><tr><td id='variant.Cstring'><code>Cstring</code></td><td><div class='docblock'><p>CSTRING</p>
-</div></td></tr><tr><td id='variant.Any'><code>Any</code></td><td><div class='docblock'><p>ANY</p>
-</div></td></tr><tr><td id='variant.AnyArray'><code>AnyArray</code></td><td><div class='docblock'><p>ANY[]</p>
-</div></td></tr><tr><td id='variant.Void'><code>Void</code></td><td><div class='docblock'><p>VOID</p>
-</div></td></tr><tr><td id='variant.Trigger'><code>Trigger</code></td><td><div class='docblock'><p>TRIGGER</p>
-</div></td></tr><tr><td id='variant.LanguageHandler'><code>LanguageHandler</code></td><td><div class='docblock'><p>LANGUAGE_HANDLER</p>
-</div></td></tr><tr><td id='variant.Internal'><code>Internal</code></td><td><div class='docblock'><p>INTERNAL</p>
-</div></td></tr><tr><td id='variant.Opaque'><code>Opaque</code></td><td><div class='docblock'><p>OPAQUE</p>
-</div></td></tr><tr><td id='variant.Anyelement'><code>Anyelement</code></td><td><div class='docblock'><p>ANYELEMENT</p>
-</div></td></tr><tr><td id='variant.RecordArray'><code>RecordArray</code></td><td><div class='docblock'><p>RECORD[]</p>
-</div></td></tr><tr><td id='variant.Anynonarray'><code>Anynonarray</code></td><td><div class='docblock'><p>ANYNONARRAY</p>
-</div></td></tr><tr><td id='variant.TxidSnapshotArray'><code>TxidSnapshotArray</code></td><td><div class='docblock'><p>TXID_SNAPSHOT[]</p>
-</div></td></tr><tr><td id='variant.Uuid'><code>Uuid</code></td><td><div class='docblock'><p>UUID - UUID datatype</p>
-</div></td></tr><tr><td id='variant.TxidSnapshot'><code>TxidSnapshot</code></td><td><div class='docblock'><p>TXID_SNAPSHOT - txid snapshot</p>
-</div></td></tr><tr><td id='variant.UuidArray'><code>UuidArray</code></td><td><div class='docblock'><p>UUID[]</p>
-</div></td></tr><tr><td id='variant.FdwHandler'><code>FdwHandler</code></td><td><div class='docblock'><p>FDW_HANDLER</p>
-</div></td></tr><tr><td id='variant.PgLsn'><code>PgLsn</code></td><td><div class='docblock'><p>PG_LSN - PostgreSQL LSN datatype</p>
-</div></td></tr><tr><td id='variant.PgLsnArray'><code>PgLsnArray</code></td><td><div class='docblock'><p>PG_LSN[]</p>
-</div></td></tr><tr><td id='variant.Anyenum'><code>Anyenum</code></td><td><div class='docblock'><p>ANYENUM</p>
-</div></td></tr><tr><td id='variant.Tsvector'><code>Tsvector</code></td><td><div class='docblock'><p>TSVECTOR - text representation for text search</p>
-</div></td></tr><tr><td id='variant.Tsquery'><code>Tsquery</code></td><td><div class='docblock'><p>TSQUERY - query representation for text search</p>
-</div></td></tr><tr><td id='variant.Gtsvector'><code>Gtsvector</code></td><td><div class='docblock'><p>GTSVECTOR - GiST index internal text representation for text search</p>
-</div></td></tr><tr><td id='variant.TsvectorArray'><code>TsvectorArray</code></td><td><div class='docblock'><p>TSVECTOR[]</p>
-</div></td></tr><tr><td id='variant.GtsvectorArray'><code>GtsvectorArray</code></td><td><div class='docblock'><p>GTSVECTOR[]</p>
-</div></td></tr><tr><td id='variant.TsqueryArray'><code>TsqueryArray</code></td><td><div class='docblock'><p>TSQUERY[]</p>
-</div></td></tr><tr><td id='variant.Regconfig'><code>Regconfig</code></td><td><div class='docblock'><p>REGCONFIG - registered text search configuration</p>
-</div></td></tr><tr><td id='variant.RegconfigArray'><code>RegconfigArray</code></td><td><div class='docblock'><p>REGCONFIG[]</p>
-</div></td></tr><tr><td id='variant.Regdictionary'><code>Regdictionary</code></td><td><div class='docblock'><p>REGDICTIONARY - registered text search dictionary</p>
-</div></td></tr><tr><td id='variant.RegdictionaryArray'><code>RegdictionaryArray</code></td><td><div class='docblock'><p>REGDICTIONARY[]</p>
-</div></td></tr><tr><td id='variant.Jsonb'><code>Jsonb</code></td><td><div class='docblock'><p>JSONB</p>
-</div></td></tr><tr><td id='variant.Anyrange'><code>Anyrange</code></td><td><div class='docblock'><p>ANYRANGE</p>
-</div></td></tr><tr><td id='variant.JsonbArray'><code>JsonbArray</code></td><td><div class='docblock'><p>JSONB[]</p>
-</div></td></tr><tr><td id='variant.Int4Range'><code>Int4Range</code></td><td><div class='docblock'><p>INT4RANGE - range of integers</p>
-</div></td></tr><tr><td id='variant.Int4RangeArray'><code>Int4RangeArray</code></td><td><div class='docblock'><p>INT4RANGE[]</p>
-</div></td></tr><tr><td id='variant.NumRange'><code>NumRange</code></td><td><div class='docblock'><p>NUMRANGE - range of numerics</p>
-</div></td></tr><tr><td id='variant.NumRangeArray'><code>NumRangeArray</code></td><td><div class='docblock'><p>NUMRANGE[]</p>
-</div></td></tr><tr><td id='variant.TsRange'><code>TsRange</code></td><td><div class='docblock'><p>TSRANGE - range of timestamps without time zone</p>
-</div></td></tr><tr><td id='variant.TsRangeArray'><code>TsRangeArray</code></td><td><div class='docblock'><p>TSRANGE[]</p>
-</div></td></tr><tr><td id='variant.TstzRange'><code>TstzRange</code></td><td><div class='docblock'><p>TSTZRANGE - range of timestamps with time zone</p>
-</div></td></tr><tr><td id='variant.TstzRangeArray'><code>TstzRangeArray</code></td><td><div class='docblock'><p>TSTZRANGE[]</p>
-</div></td></tr><tr><td id='variant.DateRange'><code>DateRange</code></td><td><div class='docblock'><p>DATERANGE - range of dates</p>
-</div></td></tr><tr><td id='variant.DateRangeArray'><code>DateRangeArray</code></td><td><div class='docblock'><p>DATERANGE[]</p>
-</div></td></tr><tr><td id='variant.Int8Range'><code>Int8Range</code></td><td><div class='docblock'><p>INT8RANGE - range of bigints</p>
-</div></td></tr><tr><td id='variant.Int8RangeArray'><code>Int8RangeArray</code></td><td><div class='docblock'><p>INT8RANGE[]</p>
-</div></td></tr><tr><td id='variant.EventTrigger'><code>EventTrigger</code></td><td><div class='docblock'><p>EVENT_TRIGGER</p>
-</div></td></tr><tr><td id='variant.Other'><code>Other</code></td><td><div class='docblock'><p>An unknown type</p>
-</div></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='enum' href='../postgres/types/enum.Type.html' title='postgres::types::Type'>Type</a></code></h3><div class='impl-items'><h4 id='method.from_oid' class='method'><code>fn <a href='#method.from_oid' class='fnname'>from_oid</a>(oid: <a class='type' href='../postgres/type.Oid.html' title='postgres::Oid'>Oid</a>) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='enum' href='../postgres/types/enum.Type.html' title='postgres::types::Type'>Type</a>&gt;</code></h4>
+<table><tr><td id='variant.Bool'><a class='stability Unmarked' title='No stability level'></a><code>Bool</code></td><td><div class='docblock'><p>BOOL - boolean, &#39;true&#39;/&#39;false&#39;</p>
+</div></td></tr><tr><td id='variant.Bytea'><a class='stability Unmarked' title='No stability level'></a><code>Bytea</code></td><td><div class='docblock'><p>BYTEA - variable-length string, binary values escaped</p>
+</div></td></tr><tr><td id='variant.Char'><a class='stability Unmarked' title='No stability level'></a><code>Char</code></td><td><div class='docblock'><p>&quot;char&quot; - single character</p>
+</div></td></tr><tr><td id='variant.Name'><a class='stability Unmarked' title='No stability level'></a><code>Name</code></td><td><div class='docblock'><p>NAME - 63-byte type for storing system identifiers</p>
+</div></td></tr><tr><td id='variant.Int8'><a class='stability Unmarked' title='No stability level'></a><code>Int8</code></td><td><div class='docblock'><p>INT8/BIGINT - ~18 digit integer, 8-byte storage</p>
+</div></td></tr><tr><td id='variant.Int2'><a class='stability Unmarked' title='No stability level'></a><code>Int2</code></td><td><div class='docblock'><p>INT2/SMALLINT - -32 thousand to 32 thousand, 2-byte storage</p>
+</div></td></tr><tr><td id='variant.Int2Vector'><a class='stability Unmarked' title='No stability level'></a><code>Int2Vector</code></td><td><div class='docblock'><p>INT2VECTOR - array of int2, used in system tables</p>
+</div></td></tr><tr><td id='variant.Int4'><a class='stability Unmarked' title='No stability level'></a><code>Int4</code></td><td><div class='docblock'><p>INT4/INT - -2 billion to 2 billion integer, 4-byte storage</p>
+</div></td></tr><tr><td id='variant.Regproc'><a class='stability Unmarked' title='No stability level'></a><code>Regproc</code></td><td><div class='docblock'><p>REGPROC - registered procedure</p>
+</div></td></tr><tr><td id='variant.Text'><a class='stability Unmarked' title='No stability level'></a><code>Text</code></td><td><div class='docblock'><p>TEXT - variable-length string, no limit specified</p>
+</div></td></tr><tr><td id='variant.Oid'><a class='stability Unmarked' title='No stability level'></a><code>Oid</code></td><td><div class='docblock'><p>OID - object identifier(oid), maximum 4 billion</p>
+</div></td></tr><tr><td id='variant.Tid'><a class='stability Unmarked' title='No stability level'></a><code>Tid</code></td><td><div class='docblock'><p>TID - (block, offset), physical location of tuple</p>
+</div></td></tr><tr><td id='variant.Xid'><a class='stability Unmarked' title='No stability level'></a><code>Xid</code></td><td><div class='docblock'><p>XID - transaction id</p>
+</div></td></tr><tr><td id='variant.Cid'><a class='stability Unmarked' title='No stability level'></a><code>Cid</code></td><td><div class='docblock'><p>CID - command identifier type, sequence in transaction id</p>
+</div></td></tr><tr><td id='variant.OidVector'><a class='stability Unmarked' title='No stability level'></a><code>OidVector</code></td><td><div class='docblock'><p>OIDVECTOR - array of oids, used in system tables</p>
+</div></td></tr><tr><td id='variant.PgType'><a class='stability Unmarked' title='No stability level'></a><code>PgType</code></td><td><div class='docblock'><p>PG_TYPE</p>
+</div></td></tr><tr><td id='variant.PgAttribute'><a class='stability Unmarked' title='No stability level'></a><code>PgAttribute</code></td><td><div class='docblock'><p>PG_ATTRIBUTE</p>
+</div></td></tr><tr><td id='variant.PgProc'><a class='stability Unmarked' title='No stability level'></a><code>PgProc</code></td><td><div class='docblock'><p>PG_PROC</p>
+</div></td></tr><tr><td id='variant.PgClass'><a class='stability Unmarked' title='No stability level'></a><code>PgClass</code></td><td><div class='docblock'><p>PG_CLASS</p>
+</div></td></tr><tr><td id='variant.Json'><a class='stability Unmarked' title='No stability level'></a><code>Json</code></td><td><div class='docblock'><p>JSON</p>
+</div></td></tr><tr><td id='variant.Xml'><a class='stability Unmarked' title='No stability level'></a><code>Xml</code></td><td><div class='docblock'><p>XML - XML content</p>
+</div></td></tr><tr><td id='variant.XmlArray'><a class='stability Unmarked' title='No stability level'></a><code>XmlArray</code></td><td><div class='docblock'><p>XML[]</p>
+</div></td></tr><tr><td id='variant.PgNodeTree'><a class='stability Unmarked' title='No stability level'></a><code>PgNodeTree</code></td><td><div class='docblock'><p>PG_NODE_TREE - string representing an internal node tree</p>
+</div></td></tr><tr><td id='variant.JsonArray'><a class='stability Unmarked' title='No stability level'></a><code>JsonArray</code></td><td><div class='docblock'><p>JSON[]</p>
+</div></td></tr><tr><td id='variant.Smgr'><a class='stability Unmarked' title='No stability level'></a><code>Smgr</code></td><td><div class='docblock'><p>SMGR - storage manager</p>
+</div></td></tr><tr><td id='variant.Point'><a class='stability Unmarked' title='No stability level'></a><code>Point</code></td><td><div class='docblock'><p>POINT - geometric point &#39;(x, y)&#39;</p>
+</div></td></tr><tr><td id='variant.Lseg'><a class='stability Unmarked' title='No stability level'></a><code>Lseg</code></td><td><div class='docblock'><p>LSEG - geometric line segment &#39;(pt1,pt2)&#39;</p>
+</div></td></tr><tr><td id='variant.Path'><a class='stability Unmarked' title='No stability level'></a><code>Path</code></td><td><div class='docblock'><p>PATH - geometric path &#39;(pt1,...)&#39;</p>
+</div></td></tr><tr><td id='variant.Box'><a class='stability Unmarked' title='No stability level'></a><code>Box</code></td><td><div class='docblock'><p>BOX - geometric box &#39;(lower left,upper right)&#39;</p>
+</div></td></tr><tr><td id='variant.Polygon'><a class='stability Unmarked' title='No stability level'></a><code>Polygon</code></td><td><div class='docblock'><p>POLYGON - geometric polygon &#39;(pt1,...)&#39;</p>
+</div></td></tr><tr><td id='variant.Line'><a class='stability Unmarked' title='No stability level'></a><code>Line</code></td><td><div class='docblock'><p>LINE - geometric line</p>
+</div></td></tr><tr><td id='variant.LineArray'><a class='stability Unmarked' title='No stability level'></a><code>LineArray</code></td><td><div class='docblock'><p>LINE[]</p>
+</div></td></tr><tr><td id='variant.Cidr'><a class='stability Unmarked' title='No stability level'></a><code>Cidr</code></td><td><div class='docblock'><p>CIDR - network IP address/netmask, network address</p>
+</div></td></tr><tr><td id='variant.CidrArray'><a class='stability Unmarked' title='No stability level'></a><code>CidrArray</code></td><td><div class='docblock'><p>CIDR[]</p>
+</div></td></tr><tr><td id='variant.Float4'><a class='stability Unmarked' title='No stability level'></a><code>Float4</code></td><td><div class='docblock'><p>FLOAT4/REAL - single-precision floating point number, 4-byte storage</p>
+</div></td></tr><tr><td id='variant.Float8'><a class='stability Unmarked' title='No stability level'></a><code>Float8</code></td><td><div class='docblock'><p>FLOAT8/DOUBLE PRECISION - double-precision floating point number, 8-byte storage</p>
+</div></td></tr><tr><td id='variant.Abstime'><a class='stability Unmarked' title='No stability level'></a><code>Abstime</code></td><td><div class='docblock'><p>ABSTIME - absolute, limited-range date and time (Unix system time)</p>
+</div></td></tr><tr><td id='variant.Reltime'><a class='stability Unmarked' title='No stability level'></a><code>Reltime</code></td><td><div class='docblock'><p>RELTIME - relative, limited-range date and time (Unix delta time)</p>
+</div></td></tr><tr><td id='variant.Tinterval'><a class='stability Unmarked' title='No stability level'></a><code>Tinterval</code></td><td><div class='docblock'><p>TINTERVAL - (abstime,abstime), time interval</p>
+</div></td></tr><tr><td id='variant.Unknown'><a class='stability Unmarked' title='No stability level'></a><code>Unknown</code></td><td><div class='docblock'><p>UNKNOWN</p>
+</div></td></tr><tr><td id='variant.Circle'><a class='stability Unmarked' title='No stability level'></a><code>Circle</code></td><td><div class='docblock'><p>CIRCLE - geometric circle &#39;(center,radius)&#39;</p>
+</div></td></tr><tr><td id='variant.CircleArray'><a class='stability Unmarked' title='No stability level'></a><code>CircleArray</code></td><td><div class='docblock'><p>CIRCLE[]</p>
+</div></td></tr><tr><td id='variant.Money'><a class='stability Unmarked' title='No stability level'></a><code>Money</code></td><td><div class='docblock'><p>MONEY - monetary amounts, $d,ddd.cc</p>
+</div></td></tr><tr><td id='variant.MoneyArray'><a class='stability Unmarked' title='No stability level'></a><code>MoneyArray</code></td><td><div class='docblock'><p>MONEY[]</p>
+</div></td></tr><tr><td id='variant.Macaddr'><a class='stability Unmarked' title='No stability level'></a><code>Macaddr</code></td><td><div class='docblock'><p>MACADDR - XX:XX:XX:XX:XX:XX, MAC address</p>
+</div></td></tr><tr><td id='variant.Inet'><a class='stability Unmarked' title='No stability level'></a><code>Inet</code></td><td><div class='docblock'><p>INET - IP address/netmask, host address, netmask optional</p>
+</div></td></tr><tr><td id='variant.BoolArray'><a class='stability Unmarked' title='No stability level'></a><code>BoolArray</code></td><td><div class='docblock'><p>BOOL[]</p>
+</div></td></tr><tr><td id='variant.ByteaArray'><a class='stability Unmarked' title='No stability level'></a><code>ByteaArray</code></td><td><div class='docblock'><p>BYTEA[]</p>
+</div></td></tr><tr><td id='variant.CharArray'><a class='stability Unmarked' title='No stability level'></a><code>CharArray</code></td><td><div class='docblock'><p>&quot;char&quot;[]</p>
+</div></td></tr><tr><td id='variant.NameArray'><a class='stability Unmarked' title='No stability level'></a><code>NameArray</code></td><td><div class='docblock'><p>NAME[]</p>
+</div></td></tr><tr><td id='variant.Int2Array'><a class='stability Unmarked' title='No stability level'></a><code>Int2Array</code></td><td><div class='docblock'><p>INT2[]</p>
+</div></td></tr><tr><td id='variant.Int2VectorArray'><a class='stability Unmarked' title='No stability level'></a><code>Int2VectorArray</code></td><td><div class='docblock'><p>INT2VECTOR[]</p>
+</div></td></tr><tr><td id='variant.Int4Array'><a class='stability Unmarked' title='No stability level'></a><code>Int4Array</code></td><td><div class='docblock'><p>INT4[]</p>
+</div></td></tr><tr><td id='variant.RegprocArray'><a class='stability Unmarked' title='No stability level'></a><code>RegprocArray</code></td><td><div class='docblock'><p>REGPROC[]</p>
+</div></td></tr><tr><td id='variant.TextArray'><a class='stability Unmarked' title='No stability level'></a><code>TextArray</code></td><td><div class='docblock'><p>TEXT[]</p>
+</div></td></tr><tr><td id='variant.TidArray'><a class='stability Unmarked' title='No stability level'></a><code>TidArray</code></td><td><div class='docblock'><p>TID[]</p>
+</div></td></tr><tr><td id='variant.XidArray'><a class='stability Unmarked' title='No stability level'></a><code>XidArray</code></td><td><div class='docblock'><p>XID[]</p>
+</div></td></tr><tr><td id='variant.CidArray'><a class='stability Unmarked' title='No stability level'></a><code>CidArray</code></td><td><div class='docblock'><p>CID[]</p>
+</div></td></tr><tr><td id='variant.OidVectorArray'><a class='stability Unmarked' title='No stability level'></a><code>OidVectorArray</code></td><td><div class='docblock'><p>OIDVECTOR[]</p>
+</div></td></tr><tr><td id='variant.BpcharArray'><a class='stability Unmarked' title='No stability level'></a><code>BpcharArray</code></td><td><div class='docblock'><p>BPCHAR[]</p>
+</div></td></tr><tr><td id='variant.VarcharArray'><a class='stability Unmarked' title='No stability level'></a><code>VarcharArray</code></td><td><div class='docblock'><p>VARCHAR[]</p>
+</div></td></tr><tr><td id='variant.Int8Array'><a class='stability Unmarked' title='No stability level'></a><code>Int8Array</code></td><td><div class='docblock'><p>INT8[]</p>
+</div></td></tr><tr><td id='variant.PointArray'><a class='stability Unmarked' title='No stability level'></a><code>PointArray</code></td><td><div class='docblock'><p>POINT[]</p>
+</div></td></tr><tr><td id='variant.LsegArray'><a class='stability Unmarked' title='No stability level'></a><code>LsegArray</code></td><td><div class='docblock'><p>LSEG[]</p>
+</div></td></tr><tr><td id='variant.PathArray'><a class='stability Unmarked' title='No stability level'></a><code>PathArray</code></td><td><div class='docblock'><p>PATH[]</p>
+</div></td></tr><tr><td id='variant.BoxArray'><a class='stability Unmarked' title='No stability level'></a><code>BoxArray</code></td><td><div class='docblock'><p>BOX[]</p>
+</div></td></tr><tr><td id='variant.Float4Array'><a class='stability Unmarked' title='No stability level'></a><code>Float4Array</code></td><td><div class='docblock'><p>FLOAT4[]</p>
+</div></td></tr><tr><td id='variant.Float8Array'><a class='stability Unmarked' title='No stability level'></a><code>Float8Array</code></td><td><div class='docblock'><p>FLOAT8[]</p>
+</div></td></tr><tr><td id='variant.AbstimeArray'><a class='stability Unmarked' title='No stability level'></a><code>AbstimeArray</code></td><td><div class='docblock'><p>ABSTIME[]</p>
+</div></td></tr><tr><td id='variant.ReltimeArray'><a class='stability Unmarked' title='No stability level'></a><code>ReltimeArray</code></td><td><div class='docblock'><p>RELTIME[]</p>
+</div></td></tr><tr><td id='variant.TintervalArray'><a class='stability Unmarked' title='No stability level'></a><code>TintervalArray</code></td><td><div class='docblock'><p>TINTERVAL[]</p>
+</div></td></tr><tr><td id='variant.PolygonArray'><a class='stability Unmarked' title='No stability level'></a><code>PolygonArray</code></td><td><div class='docblock'><p>POLYGON[]</p>
+</div></td></tr><tr><td id='variant.OidArray'><a class='stability Unmarked' title='No stability level'></a><code>OidArray</code></td><td><div class='docblock'><p>OID[]</p>
+</div></td></tr><tr><td id='variant.Aclitem'><a class='stability Unmarked' title='No stability level'></a><code>Aclitem</code></td><td><div class='docblock'><p>ACLITEM - access control list</p>
+</div></td></tr><tr><td id='variant.AclitemArray'><a class='stability Unmarked' title='No stability level'></a><code>AclitemArray</code></td><td><div class='docblock'><p>ACLITEM[]</p>
+</div></td></tr><tr><td id='variant.MacaddrArray'><a class='stability Unmarked' title='No stability level'></a><code>MacaddrArray</code></td><td><div class='docblock'><p>MACADDR[]</p>
+</div></td></tr><tr><td id='variant.InetArray'><a class='stability Unmarked' title='No stability level'></a><code>InetArray</code></td><td><div class='docblock'><p>INET[]</p>
+</div></td></tr><tr><td id='variant.Bpchar'><a class='stability Unmarked' title='No stability level'></a><code>Bpchar</code></td><td><div class='docblock'><p>BPCHAR - char(length), blank-padded string, fixed storage length</p>
+</div></td></tr><tr><td id='variant.Varchar'><a class='stability Unmarked' title='No stability level'></a><code>Varchar</code></td><td><div class='docblock'><p>VARCHAR - varchar(length), non-blank-padded string, variable storage length</p>
+</div></td></tr><tr><td id='variant.Date'><a class='stability Unmarked' title='No stability level'></a><code>Date</code></td><td><div class='docblock'><p>DATE - date</p>
+</div></td></tr><tr><td id='variant.Time'><a class='stability Unmarked' title='No stability level'></a><code>Time</code></td><td><div class='docblock'><p>TIME - time of day</p>
+</div></td></tr><tr><td id='variant.Timestamp'><a class='stability Unmarked' title='No stability level'></a><code>Timestamp</code></td><td><div class='docblock'><p>TIMESTAMP - date and time</p>
+</div></td></tr><tr><td id='variant.TimestampArray'><a class='stability Unmarked' title='No stability level'></a><code>TimestampArray</code></td><td><div class='docblock'><p>TIMESTAMP[]</p>
+</div></td></tr><tr><td id='variant.DateArray'><a class='stability Unmarked' title='No stability level'></a><code>DateArray</code></td><td><div class='docblock'><p>DATE[]</p>
+</div></td></tr><tr><td id='variant.TimeArray'><a class='stability Unmarked' title='No stability level'></a><code>TimeArray</code></td><td><div class='docblock'><p>TIME[]</p>
+</div></td></tr><tr><td id='variant.TimestampTZ'><a class='stability Unmarked' title='No stability level'></a><code>TimestampTZ</code></td><td><div class='docblock'><p>TIMESTAMPTZ - date and time with time zone</p>
+</div></td></tr><tr><td id='variant.TimestampTZArray'><a class='stability Unmarked' title='No stability level'></a><code>TimestampTZArray</code></td><td><div class='docblock'><p>TIMESTAMPTZ[]</p>
+</div></td></tr><tr><td id='variant.Interval'><a class='stability Unmarked' title='No stability level'></a><code>Interval</code></td><td><div class='docblock'><p>INTERVAL - @ &lt;number&gt; &lt;units&gt;, time interval</p>
+</div></td></tr><tr><td id='variant.IntervalArray'><a class='stability Unmarked' title='No stability level'></a><code>IntervalArray</code></td><td><div class='docblock'><p>INTERVAL[]</p>
+</div></td></tr><tr><td id='variant.NumericArray'><a class='stability Unmarked' title='No stability level'></a><code>NumericArray</code></td><td><div class='docblock'><p>NUMERIC[]</p>
+</div></td></tr><tr><td id='variant.CstringArray'><a class='stability Unmarked' title='No stability level'></a><code>CstringArray</code></td><td><div class='docblock'><p>CSTRING[]</p>
+</div></td></tr><tr><td id='variant.Timetz'><a class='stability Unmarked' title='No stability level'></a><code>Timetz</code></td><td><div class='docblock'><p>TIMETZ - time of day with time zone</p>
+</div></td></tr><tr><td id='variant.TimetzArray'><a class='stability Unmarked' title='No stability level'></a><code>TimetzArray</code></td><td><div class='docblock'><p>TIMETZ[]</p>
+</div></td></tr><tr><td id='variant.Bit'><a class='stability Unmarked' title='No stability level'></a><code>Bit</code></td><td><div class='docblock'><p>BIT - fixed-length bit string</p>
+</div></td></tr><tr><td id='variant.BitArray'><a class='stability Unmarked' title='No stability level'></a><code>BitArray</code></td><td><div class='docblock'><p>BIT[]</p>
+</div></td></tr><tr><td id='variant.Varbit'><a class='stability Unmarked' title='No stability level'></a><code>Varbit</code></td><td><div class='docblock'><p>VARBIT - variable-length bit string</p>
+</div></td></tr><tr><td id='variant.VarbitArray'><a class='stability Unmarked' title='No stability level'></a><code>VarbitArray</code></td><td><div class='docblock'><p>VARBIT[]</p>
+</div></td></tr><tr><td id='variant.Numeric'><a class='stability Unmarked' title='No stability level'></a><code>Numeric</code></td><td><div class='docblock'><p>NUMERIC - numeric(precision, decimal), arbitrary precision number</p>
+</div></td></tr><tr><td id='variant.Refcursor'><a class='stability Unmarked' title='No stability level'></a><code>Refcursor</code></td><td><div class='docblock'><p>REFCURSOR - reference to cursor (portal name)</p>
+</div></td></tr><tr><td id='variant.RefcursorArray'><a class='stability Unmarked' title='No stability level'></a><code>RefcursorArray</code></td><td><div class='docblock'><p>REFCURSOR[]</p>
+</div></td></tr><tr><td id='variant.Regprocedure'><a class='stability Unmarked' title='No stability level'></a><code>Regprocedure</code></td><td><div class='docblock'><p>REGPROCEDURE - registered procedure (with args)</p>
+</div></td></tr><tr><td id='variant.Regoper'><a class='stability Unmarked' title='No stability level'></a><code>Regoper</code></td><td><div class='docblock'><p>REGOPER - registered operator</p>
+</div></td></tr><tr><td id='variant.Regoperator'><a class='stability Unmarked' title='No stability level'></a><code>Regoperator</code></td><td><div class='docblock'><p>REGOPERATOR - registered operator (with args)</p>
+</div></td></tr><tr><td id='variant.Regclass'><a class='stability Unmarked' title='No stability level'></a><code>Regclass</code></td><td><div class='docblock'><p>REGCLASS - registered class</p>
+</div></td></tr><tr><td id='variant.Regtype'><a class='stability Unmarked' title='No stability level'></a><code>Regtype</code></td><td><div class='docblock'><p>REGTYPE - registered type</p>
+</div></td></tr><tr><td id='variant.RegprocedureArray'><a class='stability Unmarked' title='No stability level'></a><code>RegprocedureArray</code></td><td><div class='docblock'><p>REGPROCEDURE[]</p>
+</div></td></tr><tr><td id='variant.RegoperArray'><a class='stability Unmarked' title='No stability level'></a><code>RegoperArray</code></td><td><div class='docblock'><p>REGOPER[]</p>
+</div></td></tr><tr><td id='variant.RegoperatorArray'><a class='stability Unmarked' title='No stability level'></a><code>RegoperatorArray</code></td><td><div class='docblock'><p>REGOPERATOR[]</p>
+</div></td></tr><tr><td id='variant.RegclassArray'><a class='stability Unmarked' title='No stability level'></a><code>RegclassArray</code></td><td><div class='docblock'><p>REGCLASS[]</p>
+</div></td></tr><tr><td id='variant.RegtypeArray'><a class='stability Unmarked' title='No stability level'></a><code>RegtypeArray</code></td><td><div class='docblock'><p>REGTYPE[]</p>
+</div></td></tr><tr><td id='variant.Record'><a class='stability Unmarked' title='No stability level'></a><code>Record</code></td><td><div class='docblock'><p>RECORD</p>
+</div></td></tr><tr><td id='variant.Cstring'><a class='stability Unmarked' title='No stability level'></a><code>Cstring</code></td><td><div class='docblock'><p>CSTRING</p>
+</div></td></tr><tr><td id='variant.Any'><a class='stability Unmarked' title='No stability level'></a><code>Any</code></td><td><div class='docblock'><p>ANY</p>
+</div></td></tr><tr><td id='variant.AnyArray'><a class='stability Unmarked' title='No stability level'></a><code>AnyArray</code></td><td><div class='docblock'><p>ANY[]</p>
+</div></td></tr><tr><td id='variant.Void'><a class='stability Unmarked' title='No stability level'></a><code>Void</code></td><td><div class='docblock'><p>VOID</p>
+</div></td></tr><tr><td id='variant.Trigger'><a class='stability Unmarked' title='No stability level'></a><code>Trigger</code></td><td><div class='docblock'><p>TRIGGER</p>
+</div></td></tr><tr><td id='variant.LanguageHandler'><a class='stability Unmarked' title='No stability level'></a><code>LanguageHandler</code></td><td><div class='docblock'><p>LANGUAGE_HANDLER</p>
+</div></td></tr><tr><td id='variant.Internal'><a class='stability Unmarked' title='No stability level'></a><code>Internal</code></td><td><div class='docblock'><p>INTERNAL</p>
+</div></td></tr><tr><td id='variant.Opaque'><a class='stability Unmarked' title='No stability level'></a><code>Opaque</code></td><td><div class='docblock'><p>OPAQUE</p>
+</div></td></tr><tr><td id='variant.Anyelement'><a class='stability Unmarked' title='No stability level'></a><code>Anyelement</code></td><td><div class='docblock'><p>ANYELEMENT</p>
+</div></td></tr><tr><td id='variant.RecordArray'><a class='stability Unmarked' title='No stability level'></a><code>RecordArray</code></td><td><div class='docblock'><p>RECORD[]</p>
+</div></td></tr><tr><td id='variant.Anynonarray'><a class='stability Unmarked' title='No stability level'></a><code>Anynonarray</code></td><td><div class='docblock'><p>ANYNONARRAY</p>
+</div></td></tr><tr><td id='variant.TxidSnapshotArray'><a class='stability Unmarked' title='No stability level'></a><code>TxidSnapshotArray</code></td><td><div class='docblock'><p>TXID_SNAPSHOT[]</p>
+</div></td></tr><tr><td id='variant.Uuid'><a class='stability Unmarked' title='No stability level'></a><code>Uuid</code></td><td><div class='docblock'><p>UUID - UUID datatype</p>
+</div></td></tr><tr><td id='variant.TxidSnapshot'><a class='stability Unmarked' title='No stability level'></a><code>TxidSnapshot</code></td><td><div class='docblock'><p>TXID_SNAPSHOT - txid snapshot</p>
+</div></td></tr><tr><td id='variant.UuidArray'><a class='stability Unmarked' title='No stability level'></a><code>UuidArray</code></td><td><div class='docblock'><p>UUID[]</p>
+</div></td></tr><tr><td id='variant.FdwHandler'><a class='stability Unmarked' title='No stability level'></a><code>FdwHandler</code></td><td><div class='docblock'><p>FDW_HANDLER</p>
+</div></td></tr><tr><td id='variant.PgLsn'><a class='stability Unmarked' title='No stability level'></a><code>PgLsn</code></td><td><div class='docblock'><p>PG_LSN - PostgreSQL LSN datatype</p>
+</div></td></tr><tr><td id='variant.PgLsnArray'><a class='stability Unmarked' title='No stability level'></a><code>PgLsnArray</code></td><td><div class='docblock'><p>PG_LSN[]</p>
+</div></td></tr><tr><td id='variant.Anyenum'><a class='stability Unmarked' title='No stability level'></a><code>Anyenum</code></td><td><div class='docblock'><p>ANYENUM</p>
+</div></td></tr><tr><td id='variant.Tsvector'><a class='stability Unmarked' title='No stability level'></a><code>Tsvector</code></td><td><div class='docblock'><p>TSVECTOR - text representation for text search</p>
+</div></td></tr><tr><td id='variant.Tsquery'><a class='stability Unmarked' title='No stability level'></a><code>Tsquery</code></td><td><div class='docblock'><p>TSQUERY - query representation for text search</p>
+</div></td></tr><tr><td id='variant.Gtsvector'><a class='stability Unmarked' title='No stability level'></a><code>Gtsvector</code></td><td><div class='docblock'><p>GTSVECTOR - GiST index internal text representation for text search</p>
+</div></td></tr><tr><td id='variant.TsvectorArray'><a class='stability Unmarked' title='No stability level'></a><code>TsvectorArray</code></td><td><div class='docblock'><p>TSVECTOR[]</p>
+</div></td></tr><tr><td id='variant.GtsvectorArray'><a class='stability Unmarked' title='No stability level'></a><code>GtsvectorArray</code></td><td><div class='docblock'><p>GTSVECTOR[]</p>
+</div></td></tr><tr><td id='variant.TsqueryArray'><a class='stability Unmarked' title='No stability level'></a><code>TsqueryArray</code></td><td><div class='docblock'><p>TSQUERY[]</p>
+</div></td></tr><tr><td id='variant.Regconfig'><a class='stability Unmarked' title='No stability level'></a><code>Regconfig</code></td><td><div class='docblock'><p>REGCONFIG - registered text search configuration</p>
+</div></td></tr><tr><td id='variant.RegconfigArray'><a class='stability Unmarked' title='No stability level'></a><code>RegconfigArray</code></td><td><div class='docblock'><p>REGCONFIG[]</p>
+</div></td></tr><tr><td id='variant.Regdictionary'><a class='stability Unmarked' title='No stability level'></a><code>Regdictionary</code></td><td><div class='docblock'><p>REGDICTIONARY - registered text search dictionary</p>
+</div></td></tr><tr><td id='variant.RegdictionaryArray'><a class='stability Unmarked' title='No stability level'></a><code>RegdictionaryArray</code></td><td><div class='docblock'><p>REGDICTIONARY[]</p>
+</div></td></tr><tr><td id='variant.Jsonb'><a class='stability Unmarked' title='No stability level'></a><code>Jsonb</code></td><td><div class='docblock'><p>JSONB</p>
+</div></td></tr><tr><td id='variant.Anyrange'><a class='stability Unmarked' title='No stability level'></a><code>Anyrange</code></td><td><div class='docblock'><p>ANYRANGE</p>
+</div></td></tr><tr><td id='variant.JsonbArray'><a class='stability Unmarked' title='No stability level'></a><code>JsonbArray</code></td><td><div class='docblock'><p>JSONB[]</p>
+</div></td></tr><tr><td id='variant.Int4Range'><a class='stability Unmarked' title='No stability level'></a><code>Int4Range</code></td><td><div class='docblock'><p>INT4RANGE - range of integers</p>
+</div></td></tr><tr><td id='variant.Int4RangeArray'><a class='stability Unmarked' title='No stability level'></a><code>Int4RangeArray</code></td><td><div class='docblock'><p>INT4RANGE[]</p>
+</div></td></tr><tr><td id='variant.NumRange'><a class='stability Unmarked' title='No stability level'></a><code>NumRange</code></td><td><div class='docblock'><p>NUMRANGE - range of numerics</p>
+</div></td></tr><tr><td id='variant.NumRangeArray'><a class='stability Unmarked' title='No stability level'></a><code>NumRangeArray</code></td><td><div class='docblock'><p>NUMRANGE[]</p>
+</div></td></tr><tr><td id='variant.TsRange'><a class='stability Unmarked' title='No stability level'></a><code>TsRange</code></td><td><div class='docblock'><p>TSRANGE - range of timestamps without time zone</p>
+</div></td></tr><tr><td id='variant.TsRangeArray'><a class='stability Unmarked' title='No stability level'></a><code>TsRangeArray</code></td><td><div class='docblock'><p>TSRANGE[]</p>
+</div></td></tr><tr><td id='variant.TstzRange'><a class='stability Unmarked' title='No stability level'></a><code>TstzRange</code></td><td><div class='docblock'><p>TSTZRANGE - range of timestamps with time zone</p>
+</div></td></tr><tr><td id='variant.TstzRangeArray'><a class='stability Unmarked' title='No stability level'></a><code>TstzRangeArray</code></td><td><div class='docblock'><p>TSTZRANGE[]</p>
+</div></td></tr><tr><td id='variant.DateRange'><a class='stability Unmarked' title='No stability level'></a><code>DateRange</code></td><td><div class='docblock'><p>DATERANGE - range of dates</p>
+</div></td></tr><tr><td id='variant.DateRangeArray'><a class='stability Unmarked' title='No stability level'></a><code>DateRangeArray</code></td><td><div class='docblock'><p>DATERANGE[]</p>
+</div></td></tr><tr><td id='variant.Int8Range'><a class='stability Unmarked' title='No stability level'></a><code>Int8Range</code></td><td><div class='docblock'><p>INT8RANGE - range of bigints</p>
+</div></td></tr><tr><td id='variant.Int8RangeArray'><a class='stability Unmarked' title='No stability level'></a><code>Int8RangeArray</code></td><td><div class='docblock'><p>INT8RANGE[]</p>
+</div></td></tr><tr><td id='variant.EventTrigger'><a class='stability Unmarked' title='No stability level'></a><code>EventTrigger</code></td><td><div class='docblock'><p>EVENT_TRIGGER</p>
+</div></td></tr><tr><td id='variant.Other'><a class='stability Unmarked' title='No stability level'></a><code>Other</code></td><td><div class='docblock'><p>An unknown type</p>
+</div></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='enum' href='../postgres/types/enum.Type.html' title='postgres::types::Type'>Type</a></code></h3><div class='impl-items'><h4 id='method.from_oid' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.from_oid' class='fnname'>from_oid</a>(oid: <a class='type' href='../postgres/type.Oid.html' title='postgres::Oid'>Oid</a>) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='enum' href='../postgres/types/enum.Type.html' title='postgres::types::Type'>Type</a>&gt;</code></h4>
 <div class='docblock'><p>Creates a <code>Type</code> from an OID.</p>
 
 <p>If the OID is unknown, <code>None</code> is returned.</p>
-</div><h4 id='method.to_oid' class='method'><code>fn <a href='#method.to_oid' class='fnname'>to_oid</a>(&amp;self) -&gt; <a class='type' href='../postgres/type.Oid.html' title='postgres::Oid'>Oid</a></code></h4>
+</div><h4 id='method.to_oid' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.to_oid' class='fnname'>to_oid</a>(&amp;self) -&gt; <a class='type' href='../postgres/type.Oid.html' title='postgres::Oid'>Oid</a></code></h4>
 <div class='docblock'><p>Returns the OID of the <code>Type</code>.</p>
 
 <h1 id="deprecated" class='section-header'><a
                            href="#deprecated">Deprecated</a></h1>
 <p>Use <code>oid</code> instead.</p>
-</div><h4 id='method.oid' class='method'><code>fn <a href='#method.oid' class='fnname'>oid</a>(&amp;self) -&gt; <a class='type' href='../postgres/type.Oid.html' title='postgres::Oid'>Oid</a></code></h4>
+</div><h4 id='method.oid' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.oid' class='fnname'>oid</a>(&amp;self) -&gt; <a class='type' href='../postgres/type.Oid.html' title='postgres::Oid'>Oid</a></code></h4>
 <div class='docblock'><p>Returns the OID of the <code>Type</code>.</p>
-</div><h4 id='method.kind' class='method'><code>fn <a href='#method.kind' class='fnname'>kind</a>(&amp;self) -&gt; &amp;<a class='enum' href='../postgres/types/enum.Kind.html' title='postgres::types::Kind'>Kind</a></code></h4>
+</div><h4 id='method.kind' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.kind' class='fnname'>kind</a>(&amp;self) -&gt; &amp;<a class='enum' href='../postgres/types/enum.Kind.html' title='postgres::types::Kind'>Kind</a></code></h4>
 <div class='docblock'><p>The kind of this type</p>
-</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='enum' href='../postgres/types/enum.Type.html' title='postgres::types::Type'>Type</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, fmt: &amp;mut <a class='struct' href='http://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
-</div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='enum' href='../postgres/types/enum.Type.html' title='postgres::types::Type'>Type</a></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='enum' href='../postgres/types/enum.Type.html' title='postgres::types::Type'>Type</a></code></h4>
-<h4 id='method.clone_from' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
-</div><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html' title='core::cmp::Eq'>Eq</a> for <a class='enum' href='../postgres/types/enum.Type.html' title='postgres::types::Type'>Type</a></code></h3><div class='impl-items'></div><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html' title='core::cmp::PartialEq'>PartialEq</a> for <a class='enum' href='../postgres/types/enum.Type.html' title='postgres::types::Type'>Type</a></code></h3><div class='impl-items'><h4 id='method.eq' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class='enum' href='../postgres/types/enum.Type.html' title='postgres::types::Type'>Type</a>) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
-<h4 id='method.ne' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, __arg_0: &amp;<a class='enum' href='../postgres/types/enum.Type.html' title='postgres::types::Type'>Type</a>) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='enum' href='../postgres/types/enum.Type.html' title='postgres::types::Type'>Type</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, fmt: &amp;mut <a class='struct' href='http://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='enum' href='../postgres/types/enum.Type.html' title='postgres::types::Type'>Type</a></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='enum' href='../postgres/types/enum.Type.html' title='postgres::types::Type'>Type</a></code></h4>
+<h4 id='method.clone_from' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
+</div><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html' title='core::cmp::Eq'>Eq</a> for <a class='enum' href='../postgres/types/enum.Type.html' title='postgres::types::Type'>Type</a></code></h3><div class='impl-items'></div><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html' title='core::cmp::PartialEq'>PartialEq</a> for <a class='enum' href='../postgres/types/enum.Type.html' title='postgres::types::Type'>Type</a></code></h3><div class='impl-items'><h4 id='method.eq' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='http://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class='enum' href='../postgres/types/enum.Type.html' title='postgres::types::Type'>Type</a>) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+<h4 id='method.ne' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='http://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, __arg_0: &amp;<a class='enum' href='../postgres/types/enum.Type.html' title='postgres::types::Type'>Type</a>) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
 </div></section>
     <section id='search' class="content hidden"></section>
 
