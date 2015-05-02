@@ -2352,11 +2352,6 @@
 <span id="2310">2310</span>
 <span id="2311">2311</span>
 <span id="2312">2312</span>
-<span id="2313">2313</span>
-<span id="2314">2314</span>
-<span id="2315">2315</span>
-<span id="2316">2316</span>
-<span id="2317">2317</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! Rust-Postgres is a pure-Rust frontend for the popular PostgreSQL database. It</span>
 <span class='doccomment'>//! exposes a high level interface in the vein of JDBC or Go&#39;s `database/sql`</span>
@@ -3694,8 +3689,8 @@
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>transaction</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>Transaction</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;&gt;</span> {
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>conn</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>conn</span>.<span class='ident'>conn</span>.<span class='ident'>borrow_mut</span>();
         <span class='macro'>check_desync</span><span class='macro'>!</span>(<span class='ident'>conn</span>);
-        <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>conn</span>.<span class='ident'>trans_depth</span> <span class='op'>==</span> <span class='self'>self</span>.<span class='ident'>depth</span>, <span class='string'>&quot;`transaction` may only be called on the active \
-                                                 transaction&quot;</span>);
+        <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>conn</span>.<span class='ident'>trans_depth</span> <span class='op'>==</span> <span class='self'>self</span>.<span class='ident'>depth</span>,
+                <span class='string'>&quot;`transaction` may only be called on the active transaction&quot;</span>);
         <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>conn</span>.<span class='ident'>quick_query</span>(<span class='string'>&quot;SAVEPOINT sp&quot;</span>));
         <span class='ident'>conn</span>.<span class='ident'>trans_depth</span> <span class='op'>+=</span> <span class='number'>1</span>;
         <span class='prelude-val'>Ok</span>(<span class='ident'>Transaction</span> {
@@ -4083,14 +4078,6 @@
             <span class='ident'>iter</span>: <span class='self'>self</span>.<span class='ident'>data</span>.<span class='ident'>iter</span>()
         }
     }
-
-    <span class='doccomment'>/// Consumes the `Rows`, returning an iterator over its `Row`s.</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>into_iter</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>RowsIntoIter</span><span class='op'>&lt;</span><span class='lifetime'>&#39;stmt</span><span class='op'>&gt;</span> {
-        <span class='ident'>RowsIntoIter</span> {
-            <span class='ident'>stmt</span>: <span class='self'>self</span>.<span class='ident'>stmt</span>,
-            <span class='ident'>iter</span>: <span class='self'>self</span>.<span class='ident'>data</span>.<span class='ident'>into_iter</span>()
-        }
-    }
 }
 
 <span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> <span class='ident'>IntoIterator</span> <span class='kw'>for</span> <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='ident'>Rows</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> {
@@ -4107,7 +4094,10 @@
     <span class='kw'>type</span> <span class='ident'>IntoIter</span> <span class='op'>=</span> <span class='ident'>RowsIntoIter</span><span class='op'>&lt;</span><span class='lifetime'>&#39;stmt</span><span class='op'>&gt;</span>;
 
     <span class='kw'>fn</span> <span class='ident'>into_iter</span>(<span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>RowsIntoIter</span><span class='op'>&lt;</span><span class='lifetime'>&#39;stmt</span><span class='op'>&gt;</span> {
-        <span class='self'>self</span>.<span class='ident'>into_iter</span>()
+        <span class='ident'>RowsIntoIter</span> {
+            <span class='ident'>stmt</span>: <span class='self'>self</span>.<span class='ident'>stmt</span>,
+            <span class='ident'>iter</span>: <span class='self'>self</span>.<span class='ident'>data</span>.<span class='ident'>into_iter</span>()
+        }
     }
 }
 
