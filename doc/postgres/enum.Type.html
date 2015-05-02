@@ -202,7 +202,7 @@
     Int8RangeArray,
     EventTrigger,
     Other(<a class='struct' href='http://doc.rust-lang.org/nightly/alloc/boxed/struct.Box.html' title='alloc::boxed::Box'>Box</a>&lt;<a class='struct' href='../postgres/types/struct.Other.html' title='postgres::types::Other'>Other</a>&gt;),
-}</pre><div class='docblock'><p>A Postgres type</p>
+}</pre><div class='docblock'><p>A Postgres type.</p>
 </div><h2 class='variants'>Variants</h2>
 <table><tr><td id='variant.Bool'><code>Bool</code></td><td><div class='docblock'><p>BOOL - boolean, &#39;true&#39;/&#39;false&#39;</p>
 </div></td></tr><tr><td id='variant.Bytea'><code>Bytea</code></td><td><div class='docblock'><p>BYTEA - variable-length string, binary values escaped</p>
@@ -360,7 +360,7 @@
 </div></td></tr><tr><td id='variant.Int8Range'><code>Int8Range</code></td><td><div class='docblock'><p>INT8RANGE - range of bigints</p>
 </div></td></tr><tr><td id='variant.Int8RangeArray'><code>Int8RangeArray</code></td><td><div class='docblock'><p>INT8RANGE[]</p>
 </div></td></tr><tr><td id='variant.EventTrigger'><code>EventTrigger</code></td><td><div class='docblock'><p>EVENT_TRIGGER</p>
-</div></td></tr><tr><td id='variant.Other'><code>Other</code></td><td><div class='docblock'><p>An unknown type</p>
+</div></td></tr><tr><td id='variant.Other'><code>Other</code></td><td><div class='docblock'><p>An unknown type.</p>
 </div></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='enum' href='../postgres/types/enum.Type.html' title='postgres::types::Type'>Type</a></code></h3><div class='impl-items'><h4 id='method.from_oid' class='method'><code>fn <a href='#method.from_oid' class='fnname'>from_oid</a>(oid: <a class='type' href='../postgres/type.Oid.html' title='postgres::Oid'>Oid</a>) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='enum' href='../postgres/types/enum.Type.html' title='postgres::types::Type'>Type</a>&gt;</code></h4>
 <div class='docblock'><p>Creates a <code>Type</code> from an OID.</p>
 
@@ -374,7 +374,7 @@
 </div><h4 id='method.oid' class='method'><code>fn <a href='#method.oid' class='fnname'>oid</a>(&amp;self) -&gt; <a class='type' href='../postgres/type.Oid.html' title='postgres::Oid'>Oid</a></code></h4>
 <div class='docblock'><p>Returns the OID of the <code>Type</code>.</p>
 </div><h4 id='method.kind' class='method'><code>fn <a href='#method.kind' class='fnname'>kind</a>(&amp;self) -&gt; &amp;<a class='enum' href='../postgres/types/enum.Kind.html' title='postgres::types::Kind'>Kind</a></code></h4>
-<div class='docblock'><p>The kind of this type</p>
+<div class='docblock'><p>The kind of this type.</p>
 </div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='enum' href='../postgres/types/enum.Type.html' title='postgres::types::Type'>Type</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, fmt: &amp;mut <a class='struct' href='http://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
 </div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='enum' href='../postgres/types/enum.Type.html' title='postgres::types::Type'>Type</a></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='enum' href='../postgres/types/enum.Type.html' title='postgres::types::Type'>Type</a></code></h4>
 <h4 id='method.clone_from' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>

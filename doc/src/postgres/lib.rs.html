@@ -2587,18 +2587,18 @@
     }
 }
 
-<span class='doccomment'>/// An asynchronous notification</span>
+<span class='doccomment'>/// An asynchronous notification.</span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Clone</span>, <span class='ident'>Debug</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Notification</span> {
-    <span class='doccomment'>/// The process ID of the notifying backend process</span>
+    <span class='doccomment'>/// The process ID of the notifying backend process.</span>
     <span class='kw'>pub</span> <span class='ident'>pid</span>: <span class='ident'>u32</span>,
-    <span class='doccomment'>/// The name of the channel that the notify has been raised on</span>
+    <span class='doccomment'>/// The name of the channel that the notify has been raised on.</span>
     <span class='kw'>pub</span> <span class='ident'>channel</span>: <span class='ident'>String</span>,
-    <span class='doccomment'>/// The &quot;payload&quot; string passed from the notifying process</span>
+    <span class='doccomment'>/// The &quot;payload&quot; string passed from the notifying process.</span>
     <span class='kw'>pub</span> <span class='ident'>payload</span>: <span class='ident'>String</span>,
 }
 
-<span class='doccomment'>/// An iterator over asynchronous notifications</span>
+<span class='doccomment'>/// An iterator over asynchronous notifications.</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Notifications</span><span class='op'>&lt;</span><span class='lifetime'>&#39;conn</span><span class='op'>&gt;</span> {
     <span class='ident'>conn</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;conn</span> <span class='ident'>Connection</span>
 }
@@ -2705,12 +2705,12 @@
     */</span>
 }
 
-<span class='doccomment'>/// Contains information necessary to cancel queries for a session</span>
+<span class='doccomment'>/// Contains information necessary to cancel queries for a session.</span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Copy</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>CancelData</span> {
-    <span class='doccomment'>/// The process ID of the session</span>
+    <span class='doccomment'>/// The process ID of the session.</span>
     <span class='kw'>pub</span> <span class='ident'>process_id</span>: <span class='ident'>u32</span>,
-    <span class='doccomment'>/// The secret key for the session</span>
+    <span class='doccomment'>/// The secret key for the session.</span>
     <span class='kw'>pub</span> <span class='ident'>secret_key</span>: <span class='ident'>u32</span>,
 }
 
@@ -3601,14 +3601,14 @@
     }
 }
 
-<span class='doccomment'>/// Specifies the SSL support requested for a new connection</span>
+<span class='doccomment'>/// Specifies the SSL support requested for a new connection.</span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>SslMode</span> {
-    <span class='doccomment'>/// The connection will not use SSL</span>
+    <span class='doccomment'>/// The connection will not use SSL.</span>
     <span class='prelude-val'>None</span>,
-    <span class='doccomment'>/// The connection will use SSL if the backend supports it</span>
+    <span class='doccomment'>/// The connection will use SSL if the backend supports it.</span>
     <span class='ident'>Prefer</span>(<span class='ident'>SslContext</span>),
-    <span class='doccomment'>/// The connection must use SSL</span>
+    <span class='doccomment'>/// The connection must use SSL.</span>
     <span class='ident'>Require</span>(<span class='ident'>SslContext</span>)
 }
 
@@ -3742,7 +3742,7 @@
     }
 }
 
-<span class='doccomment'>/// A prepared statement</span>
+<span class='doccomment'>/// A prepared statement.</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Statement</span><span class='op'>&lt;</span><span class='lifetime'>&#39;conn</span><span class='op'>&gt;</span> {
     <span class='ident'>conn</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;conn</span> <span class='ident'>Connection</span>,
     <span class='ident'>name</span>: <span class='ident'>String</span>,
@@ -4188,7 +4188,7 @@
 }
 
 <span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> <span class='ident'>Row</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> {
-    <span class='doccomment'>/// Returns the number of values in the row</span>
+    <span class='doccomment'>/// Returns the number of values in the row.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>len</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>usize</span> {
         <span class='self'>self</span>.<span class='ident'>data</span>.<span class='ident'>len</span>()
     }
@@ -4280,7 +4280,7 @@
     }
 }
 
-<span class='doccomment'>/// A lazily-loaded iterator over the resulting rows of a query</span>
+<span class='doccomment'>/// A lazily-loaded iterator over the resulting rows of a query.</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>LazyRows</span><span class='op'>&lt;</span><span class='lifetime'>&#39;trans</span>, <span class='lifetime'>&#39;stmt</span><span class='op'>&gt;</span> {
     <span class='ident'>stmt</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;stmt</span> <span class='ident'>Statement</span><span class='op'>&lt;</span><span class='lifetime'>&#39;stmt</span><span class='op'>&gt;</span>,
     <span class='ident'>data</span>: <span class='ident'>VecDeque</span><span class='op'>&lt;</span><span class='ident'>Vec</span><span class='op'>&lt;</span><span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>u8</span><span class='op'>&gt;&gt;</span><span class='op'>&gt;&gt;</span>,
@@ -4372,7 +4372,7 @@
     }
 }
 
-<span class='doccomment'>/// A prepared COPY FROM STDIN statement</span>
+<span class='doccomment'>/// A prepared `COPY FROM STDIN` statement.</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>CopyInStatement</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> {
     <span class='ident'>conn</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='ident'>Connection</span>,
     <span class='ident'>name</span>: <span class='ident'>String</span>,

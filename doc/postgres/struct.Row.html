@@ -43,12 +43,12 @@
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>postgres</a>::<wbr><a class='struct' href=''>Row</a></span><span class='out-of-band'><span id='render-detail'>
             <a id="toggle-all-docs" href="#" title="collapse all docs">[&minus;]</a>
-        </span><a id='src-33044' class='srclink' href='../src/postgres/lib.rs.html#1822-1825' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-33006' class='srclink' href='../src/postgres/lib.rs.html#1822-1825' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct Row&lt;'a&gt; {
     // some fields omitted
 }</pre><div class='docblock'><p>A single result row of a query.</p>
 </div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;'a&gt; <a class='struct' href='../postgres/struct.Row.html' title='postgres::Row'>Row</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='method.len' class='method'><code>fn <a href='#method.len' class='fnname'>len</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></h4>
-<div class='docblock'><p>Returns the number of values in the row</p>
+<div class='docblock'><p>Returns the number of values in the row.</p>
 </div><h4 id='method.columns' class='method'><code>fn <a href='#method.columns' class='fnname'>columns</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;'a [</a><a class='struct' href='../postgres/struct.Column.html' title='postgres::Column'>Column</a><a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a></code></h4>
 <div class='docblock'><p>Returns a slice describing the columns of the <code>Row</code>.</p>
 </div><h4 id='method.get_opt' class='method'><code>fn <a href='#method.get_opt' class='fnname'>get_opt</a>&lt;I, T&gt;(&amp;self, idx: I) -&gt; <a class='type' href='../postgres/type.Result.html' title='postgres::Result'>Result</a>&lt;T&gt; <span class='where'>where I: <a class='trait' href='../postgres/trait.RowIndex.html' title='postgres::RowIndex'>RowIndex</a>, T: <a class='trait' href='../postgres/trait.FromSql.html' title='postgres::FromSql'>FromSql</a></span></code></h4>
