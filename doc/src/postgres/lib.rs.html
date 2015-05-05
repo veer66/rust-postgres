@@ -2352,6 +2352,8 @@
 <span id="2310">2310</span>
 <span id="2311">2311</span>
 <span id="2312">2312</span>
+<span id="2313">2313</span>
+<span id="2314">2314</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! Rust-Postgres is a pure-Rust frontend for the popular PostgreSQL database. It</span>
 <span class='doccomment'>//! exposes a high level interface in the vein of JDBC or Go&#39;s `database/sql`</span>
@@ -2400,6 +2402,7 @@
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>doc</span>(<span class='ident'>html_root_url</span><span class='op'>=</span><span class='string'>&quot;https://sfackler.github.io/rust-postgres/doc&quot;</span>)]</span>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>warn</span>(<span class='ident'>missing_docs</span>)]</span>
 
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>bufstream</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>byteorder</span>;
 <span class='attribute'>#[<span class='ident'>macro_use</span>]</span>
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>log</span>;
@@ -2410,6 +2413,7 @@
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>unix_socket</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>debug_builders</span>;
 
+<span class='kw'>use</span> <span class='ident'>bufstream</span>::<span class='ident'>BufStream</span>;
 <span class='kw'>use</span> <span class='ident'>debug_builders</span>::<span class='ident'>DebugStruct</span>;
 <span class='kw'>use</span> <span class='ident'>openssl</span>::<span class='ident'>crypto</span>::<span class='ident'>hash</span>::{<span class='self'>self</span>, <span class='ident'>Hasher</span>};
 <span class='kw'>use</span> <span class='ident'>openssl</span>::<span class='ident'>ssl</span>::{<span class='ident'>SslContext</span>, <span class='ident'>MaybeSslStream</span>};
@@ -2420,7 +2424,7 @@
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::{<span class='ident'>VecDeque</span>, <span class='ident'>HashMap</span>};
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>fmt</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>iter</span>::<span class='ident'>IntoIterator</span>;
-<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>io</span>::{<span class='self'>self</span>, <span class='ident'>BufStream</span>};
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>io</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>io</span>::<span class='ident'>prelude</span>::<span class='op'>*</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>mem</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>slice</span>;
