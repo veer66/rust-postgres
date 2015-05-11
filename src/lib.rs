@@ -93,7 +93,7 @@ use url::Url;
 #[macro_use]
 mod macros;
 
-mod error;
+pub mod error;
 mod io_util;
 mod message;
 mod ugh_privacy;
